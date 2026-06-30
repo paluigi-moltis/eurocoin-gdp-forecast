@@ -1,0 +1,61 @@
+# Sensitive data — regenerate from public sources
+data/raw/
+data/vintages/
+
+# Extended (commercial) data — never commit
+data/extended/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# uv
+# uv.lock is committed — it's the lockfile
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Pytest
+.pytest_cache/
+
+# Model outputs (large files)
+results/models/
+results/*.pt
+results/*.pth
+results/*.ckpt
+
+# Environment
+.env
