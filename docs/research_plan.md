@@ -1,7 +1,7 @@
 # Research Plan: Transformer-Based Medium-Term GDP Forecasting for the Euro Area
 
 **Project:** Eurocoin Modernization Research
-**Version:** 1.1 — Revised (data vintages, ragged-edge removal, Eurocoin revision note)
+**Version:** 1.2 — Revised (per-series publication lags & revision histories for all panel series)
 **Date:** 2026-06-30
 **Target output:** English-language working paper + working prototype
 
@@ -223,30 +223,60 @@ For each detected regime, compute and compare:
 
 Macroeconomic data is subject to both **publication lags** and **revisions**. A correct pseudo-real-time backtest must respect both:
 
-1. **Publication lags:** GDP for quarter Q is released approximately 30 days after quarter-end (flash estimate), with subsequent releases over the following months. Monthly indicators (IP, surveys, PMI) have shorter lags (2–6 weeks). This means that at any given backtest date, the most recent quarter(s) of GDP and the most recent month(s) of some monthly series are **not yet available** — creating the "ragged edge" at the end of the panel.
+1. **Publication lags:** No series in the panel is published instantaneously. The estimation date is conventionally the **last day of the month**. At that date, the most recent month(s) of most explanatory variables are not yet published, and the most recent quarter(s) of GDP are not yet released. GDP for quarter Q is released approximately 30 days after quarter-end (flash estimate), with subsequent releases over the following months. Monthly indicators have varying lags — surveys (DG-ECFIN) are typically available around the end of the reference month or the very first days of the following month; "hard" data (industrial production, retail sales, external trade) are released 4–8 weeks after the reference month; PMI is typically released on the first business day of the following month. This creates a **ragged edge** at the bottom of the data panel: different series have different last-available months, and the pattern depends on the specific backtest date.
 
-2. **Data revisions:** Euro-area GDP is seasonally adjusted; when new observations are added, seasonal adjustment factors are re-estimated and **past values are revised**. A GDP growth figure for 2014Q4 available in April 2015 may differ from the same figure available in 2024. Monthly series (especially IP, retail sales, trade) are similarly revised.
+2. **Data revisions:** Virtually all series in the panel are subject to revision, not just GDP. When seasonal adjustment factors are re-estimated and source data is updated, **past values are revised**. This affects:
+   - **GDP:** Seasonally adjusted q-o-q growth rates are revised at each release (flash → first → second) and then again at quarterly, annual, and benchmark revisions. A GDP growth figure for 2014Q4 available in April 2015 may differ from the same figure available in 2024.
+   - **Hard monthly indicators (IP, retail sales, trade):** These are routinely revised for 2–3 months after initial release, and again at annual benchmark revisions.
+   - **Surveys:** Generally not revised (raw opinion data), but the composite indicators (ESI) may be marginally adjusted.
+   - **Prices (HICP, PPI):** Typically not revised after the first release (except for annual basket updates).
+   - **Monetary/financial data:** Minor revisions possible.
 
-**Consequence:** At each backtest date, we must use the **data vintage** that was actually available at that point — not today's fully-revised data. Using revised data would leak future information and produce over-optimistic results.
+   Each series in the panel must therefore carry **its own revision history**, and the vintage for a given backtest date must reflect the values as they were known on that date for every series — not only for GDP.
+
+**Consequence:** At each backtest date, we must reconstruct the **complete data vintage** — for every series in the panel — that was actually available at that point. Using today's fully-revised data for any series would leak future information and produce over-optimistic results.
 
 #### Backtesting Protocol with Data Vintages
 
 ```
-For each backtest date t (monthly frequency, e.g., April 2015):
+For each backtest date t (conventionally the last day of the month,
+e.g., 30 April 2015):
 
-    1. CONSTRUCT VINTAGE:
-       a. Determine which GDP quarters are available as of date t
-          (e.g., in April 2015: GDP through 2014Q4 is available;
-           2015Q1 flash is not yet released — comes ~April 30/May)
-       b. For all available GDP quarters, use the GDP VALUES as they
-          were known at date t (not today's revised estimates)
-       c. For monthly covariates, respect publication lags
-          (e.g., March 2015 IP published ~mid-May 2015)
-       d. Assemble the resulting panel → this is the "vintage_t" panel
+    1. CONSTRUCT VINTAGE (for EVERY series in the panel):
+
+       For each series s in the panel:
+
+         a. Determine the last available observation as of date t,
+            using the series-specific publication lag schedule:
+            - Surveys (ESI, confidence): lag ~0–5 days → last avail
+              month is typically the current or previous month
+            - PMI: lag ~1–3 days → last avail month is typically t-1
+            - Hard data (IP, retail, trade): lag ~30–45 days → last
+              avail month is t-2 or t-3
+            - GDP: lag ~30 days after quarter-end → last avail quarter
+              depends on position within the quarter
+
+         b. For the available observations, retrieve the VALUES as they
+            were known at date t — i.e., the vintage values, not today's
+            revised estimates. This requires per-series revision history:
+            - GDP: Eurostat real-time database (exact vintages)
+            - Hard monthly indicators: Eurostat revision history / SDMX
+              metadata (where available); approximate from known revision
+              patterns where not
+            - Surveys: typically unrevised (use current values)
+            - Prices: typically unrevised (use current values)
+
+         c. The result for series s: a vector of values with a potentially
+            different last-available date and potentially different past
+            values compared to today's data.
+
+       Assemble all series → the "vintage_t" panel (ragged-edge matrix
+       with series-specific missing patterns at the recent end)
 
     2. SAVE VINTAGE:
        Write the vintage panel to data/vintages/vintage_YYYY-MM.csv
        (one CSV per backtest date, for full reproducibility and review)
+       Include metadata: last-available-date per series, vintage source
 
     3. ESTIMATE/FORECAST:
        a. Estimate GDFM baseline on vintage_t panel → baseline forecast
@@ -258,7 +288,7 @@ For each backtest date t (monthly frequency, e.g., April 2015):
           fully-revised GDP — known only ex post)
        b. Compare against published €coin value for that month
 
-    5. REPEAT for next backtest date (roll forward monthly or quarterly)
+    5. REPEAT for next backtest date (roll forward monthly)
 ```
 
 **Vintage storage:** A dedicated directory `data/vintages/` contains one CSV file per backtest date (e.g., `vintage_2015-04.csv`), storing the exact data panel used for that estimation. This allows:
@@ -266,7 +296,15 @@ For each backtest date t (monthly frequency, e.g., April 2015):
 - Audit trail for reviewer/replicator
 - Comparison of how forecasts evolved as data was revised
 
-**Vintage construction method:** The primary approach is to use the **Eurostat GDP revision history** (real-time database) to reconstruct the GDP values as they were known at each past date. For monthly indicators, we approximate vintages using known publication lag schedules. Where exact vintage data is not available (especially for monthly series revisions), we document the approximation and assess its impact.
+**Vintage construction method:** The vintage system requires two inputs per series:
+1. **A publication-lag schedule** — for each series, a rule (or lookup table) specifying the typical number of days between the reference period and the release date. This determines which months are available at each backtest date. The estimation date is conventionally the last calendar day of the month.
+2. **A revision history** — for each series, the values as they were known at each past date. Primary data sources:
+   - **GDP:** Eurostat real-time database provides exact historical vintages (values as known at each release date).
+   - **Hard monthly indicators (IP, retail sales, trade):** Eurostat SDMX revision history where available; for series without archived vintages, we approximate by applying known revision patterns (typical revision magnitude for 1–3 months after release, annual benchmark revisions).
+   - **Surveys (DG-ECFIN) and prices (HICP, PPI):** Generally unrevised after first publication; current values are used as the vintage.
+   - **Monetary/financial data:** Minor revisions; current values used with documented approximation.
+
+Where exact vintage data is not available for a specific series, the approximation is documented and its sensitivity assessed. The `vintages.py` module maintains a **per-series metadata table** (lag schedule, revision policy, vintage source) that drives the vintage construction.
 
 **Note on Eurocoin published values:** The official Eurocoin indicator was revised multiple times from 2022 onward (reducing the variable set as the original panel produced too-volatile results). Therefore, substantial differences between published Eurocoin values and our GDFM reconstruction are **expected and acceptable**. The comparison against published values serves as a qualitative benchmark (turning points, broad co-movement), not as an exact replication target.
 
