@@ -1,0 +1,169 @@
+{
+  "Attention Is All You Need": {
+    "id": "https://openalex.org/W2626778328",
+    "title": "Attention Is All You Need",
+    "doi": "https://doi.org/10.65215/2q58a426",
+    "publication_year": 2025,
+    "cited_by_count": 6576,
+    "authors": [
+      "Ashish Vaswani",
+      "Noam Shazeer",
+      "Niki Parmar"
+    ]
+  },
+  "Informer Beyond Efficient Transformer Long Sequence": {
+    "id": "https://openalex.org/W3177318507",
+    "title": "Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting",
+    "doi": "https://doi.org/10.1609/aaai.v35i12.17325",
+    "publication_year": 2021,
+    "cited_by_count": 6108,
+    "authors": [
+      "Haoyi Zhou",
+      "Shanghang Zhang",
+      "Jieqi Peng"
+    ]
+  },
+  "Are Transformers Effective for Time Series Forecasting": {
+    "id": "https://openalex.org/W4382203079",
+    "title": "Are Transformers Effective for Time Series Forecasting?",
+    "doi": "https://doi.org/10.1609/aaai.v37i9.26317",
+    "publication_year": 2023,
+    "cited_by_count": 2623,
+    "authors": [
+      "Ailing Zeng",
+      "Muxi Chen",
+      "Lei Zhang"
+    ]
+  },
+  "PatchTST Time Series Transformers": {
+    "id": "https://openalex.org/W4416922526",
+    "title": "CT-PatchTST: Channel-Time Patch Time-Series Transformer for Long-Term Renewable Energy Forecasting",
+    "doi": "https://doi.org/10.1109/iscipt67144.2025.11265471",
+    "publication_year": 2025,
+    "cited_by_count": 10,
+    "authors": [
+      "Kuan Lu",
+      "Meimei Huo",
+      "Yuxiao Li"
+    ]
+  },
+  "Temporal Fusion Transformers interpretable multi-horizon forecasting": {
+    "id": "https://openalex.org/W2996331899",
+    "title": "Temporal Fusion Transformers for interpretable multi-horizon time series forecasting",
+    "doi": "https://doi.org/10.1016/j.ijforecast.2021.03.012",
+    "publication_year": 2021,
+    "cited_by_count": 153,
+    "authors": [
+      "Bryan Lim",
+      "Sercan \u00d6. Ar\u0131k",
+      "Nicolas Loeff"
+    ]
+  },
+  "Autoformer Decomposition Transformers": {
+    "id": "https://openalex.org/W3212890323",
+    "title": "Autoformer: Decomposition Transformers with Auto-Correlation for\\n Long-Term Series Forecasting",
+    "doi": "https://doi.org/10.48550/arxiv.2106.13008",
+    "publication_year": 2021,
+    "cited_by_count": 1326,
+    "authors": [
+      "Haixu Wu",
+      "Jiehui Xu",
+      "Jianmin Wang"
+    ]
+  },
+  "N-BEATS neural basis expansion forecasting": {
+    "id": "https://openalex.org/W2996552856",
+    "title": "N-BEATS: Neural basis expansion analysis for interpretable time series\\n forecasting",
+    "doi": "https://doi.org/10.48550/arxiv.1905.10437",
+    "publication_year": 2019,
+    "cited_by_count": 522,
+    "authors": [
+      "Boris N. Oreshkin",
+      "Dmitri Carpov",
+      "Nicolas Chapados"
+    ]
+  },
+  "Nowcasting GDP using machine learning algorithms real-time assessment": {
+    "id": "https://openalex.org/W3099116679",
+    "title": "Nowcasting GDP using machine-learning algorithms: A\u00a0real-time assessment",
+    "doi": "https://doi.org/10.1016/j.ijforecast.2020.10.005",
+    "publication_year": 2020,
+    "cited_by_count": 120,
+    "authors": [
+      "Adam Richardson",
+      "Thomas van Florenstein Mulder",
+      "Tu\u011frul Vehbi"
+    ]
+  },
+  "How is machine learning useful for macroeconomic forecasting": {
+    "id": "https://openalex.org/W2996608372",
+    "title": "How is machine learning useful for macroeconomic forecasting?",
+    "doi": "https://doi.org/10.1002/jae.2910",
+    "publication_year": 2022,
+    "cited_by_count": 217,
+    "authors": [
+      "Philippe Goulet Coulombe",
+      "Maxime Leroux",
+      "Dalibor Stevanovi\u0107"
+    ]
+  },
+  "Macroeconomic forecasting with mixed frequency data": {
+    "id": "https://openalex.org/W1553858487",
+    "title": "Macroeconomic Forecasting With Mixed-Frequency Data",
+    "doi": "https://doi.org/10.1198/073500108000000015",
+    "publication_year": 2008,
+    "cited_by_count": 395,
+    "authors": [
+      "Michael P. Clements",
+      "Ana Beatriz Galv\u00e3o"
+    ]
+  },
+  "Bayesian Estimator Abrupt Change Seasonality Trend": {
+    "id": "https://openalex.org/W4415446992",
+    "title": "Precipitation Variation Characteristics in Gannan Prefecture, China: Application of the Innovative Trend Analysis and the BEAST (Bayesian Estimator of Abrupt Change, Seasonality, and Trend) Ensemble Algorithm",
+    "doi": "https://doi.org/10.3390/atmos16111223",
+    "publication_year": 2025,
+    "cited_by_count": 0,
+    "authors": [
+      "Hui Zhou",
+      "Linjing Wei",
+      "Yanqiang Cui"
+    ]
+  },
+  "Deep learning for time series classification": {
+    "id": "https://openalex.org/W2892035503",
+    "title": "Deep learning for time series classification: a review",
+    "doi": "https://doi.org/10.1007/s10618-019-00619-1",
+    "publication_year": 2019,
+    "cited_by_count": 3204,
+    "authors": [
+      "Hassan Ismail Fawaz",
+      "Germain Forestier",
+      "Jonathan Weber"
+    ]
+  },
+  "FEDformer Frequency Enhanced Transformer": {
+    "id": "https://openalex.org/W4225494949",
+    "title": "FEDformer: Frequency Enhanced Decomposed Transformer for Long-term Series Forecasting",
+    "doi": "https://doi.org/10.48550/arxiv.2201.12740",
+    "publication_year": 2022,
+    "cited_by_count": 541,
+    "authors": [
+      "Tian Zhou",
+      "Ziqing Ma",
+      "Qingsong Wen"
+    ]
+  },
+  "iTransformer Inverted Transformers Time Series": {
+    "id": "https://openalex.org/W4387561305",
+    "title": "iTransformer: Inverted Transformers Are Effective for Time Series Forecasting",
+    "doi": "https://doi.org/10.48550/arxiv.2310.06625",
+    "publication_year": 2023,
+    "cited_by_count": 366,
+    "authors": [
+      "Yong Liu",
+      "Tengge Hu",
+      "Haoran Zhang"
+    ]
+  }
+}

@@ -1,0 +1,1792 @@
+{
+  "transformer_timeseries_focused": [
+    {
+      "id": "https://openalex.org/W3140854437",
+      "title": "Review of deep learning: concepts, CNN architectures, challenges, applications, future directions",
+      "doi": "https://doi.org/10.1186/s40537-021-00444-8",
+      "publication_year": 2021,
+      "cited_by_count": 7559,
+      "authors": [
+        "Laith Alzubaidi",
+        "Jinglan Zhang",
+        "Amjad J. Humaidi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3177318507",
+      "title": "Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting",
+      "doi": "https://doi.org/10.1609/aaai.v35i12.17325",
+      "publication_year": 2021,
+      "cited_by_count": 6108,
+      "authors": [
+        "Haoyi Zhou",
+        "Shanghang Zhang",
+        "Jieqi Peng"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4360620450",
+      "title": "Opinion Paper: \u201cSo what if ChatGPT wrote it?\u201d Multidisciplinary perspectives on opportunities, challenges and implications of generative conversational AI for research, practice and policy",
+      "doi": "https://doi.org/10.1016/j.ijinfomgt.2023.102642",
+      "publication_year": 2023,
+      "cited_by_count": 3735,
+      "authors": [
+        "Yogesh K. Dwivedi",
+        "Nir Kshetri",
+        "Laurie Hughes"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4382203079",
+      "title": "Are Transformers Effective for Time Series Forecasting?",
+      "doi": "https://doi.org/10.1609/aaai.v37i9.26317",
+      "publication_year": 2023,
+      "cited_by_count": 2623,
+      "authors": [
+        "Ailing Zeng",
+        "Muxi Chen",
+        "Lei Zhang"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3153990350",
+      "title": "Machine learning and deep learning",
+      "doi": "https://doi.org/10.1007/s12525-021-00475-2",
+      "publication_year": 2021,
+      "cited_by_count": 2491,
+      "authors": [
+        "Christian Janiesch",
+        "Patrick Zschech",
+        "Kai Heinrich"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4206484811",
+      "title": "A Metaverse: Taxonomy, Components, Applications, and Open Challenges",
+      "doi": "https://doi.org/10.1109/access.2021.3140175",
+      "publication_year": 2022,
+      "cited_by_count": 1762,
+      "authors": [
+        "Sangmin Park",
+        "Young\u2010Gab Kim"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4383218913",
+      "title": "Accurate medium-range global weather forecasting with 3D neural networks",
+      "doi": "https://doi.org/10.1038/s41586-023-06185-3",
+      "publication_year": 2023,
+      "cited_by_count": 1426,
+      "authors": [
+        "Kaifeng Bi",
+        "Lingxi Xie",
+        "Hengheng Zhang"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4210827551",
+      "title": "A survey on sentiment analysis methods, applications, and challenges",
+      "doi": "https://doi.org/10.1007/s10462-022-10144-1",
+      "publication_year": 2022,
+      "cited_by_count": 1425,
+      "authors": [
+        "Mayur Wankhade",
+        "Annavarapu Chandra Sekhara Rao",
+        "Chaitanya Kulkarni"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4296079469",
+      "title": "A Survey of Ensemble Learning: Concepts, Algorithms, Applications, and Prospects",
+      "doi": "https://doi.org/10.1109/access.2022.3207287",
+      "publication_year": 2022,
+      "cited_by_count": 1175,
+      "authors": [
+        "Ibomoiye Domor Mienye",
+        "Yanxia Sun"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3074741277",
+      "title": "A Review of Deep Learning in Medical Imaging: Imaging Traits, Technology Trends, Case Studies With Progress Highlights, and Future Promises",
+      "doi": "https://doi.org/10.1109/jproc.2021.3054390",
+      "publication_year": 2021,
+      "cited_by_count": 1000,
+      "authors": [
+        "S. Kevin Zhou",
+        "Hayit Greenspan",
+        "Christos Davatzikos"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4366091323",
+      "title": "Deep learning modelling techniques: current progress, applications, advantages, and challenges",
+      "doi": "https://doi.org/10.1007/s10462-023-10466-8",
+      "publication_year": 2023,
+      "cited_by_count": 962,
+      "authors": [
+        "Shams Forruque Ahmed",
+        "Md. Sakib Bin Alam",
+        "Maruf Hassan"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3174022889",
+      "title": "Spatial-Temporal Fusion Graph Neural Networks for Traffic Flow Forecasting",
+      "doi": "https://doi.org/10.1609/aaai.v35i5.16542",
+      "publication_year": 2021,
+      "cited_by_count": 850,
+      "authors": [
+        "Mengzhang Li",
+        "Zhanxing Zhu"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4365504037",
+      "title": "A survey on deep learning tools dealing with data scarcity: definitions, challenges, solutions, tips, and applications",
+      "doi": "https://doi.org/10.1186/s40537-023-00727-2",
+      "publication_year": 2023,
+      "cited_by_count": 796,
+      "authors": [
+        "Laith Alzubaidi",
+        "Jinshuai Bai",
+        "Aiman Al-Sabaawi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3006087551",
+      "title": "Informed Machine Learning - A Taxonomy and Survey of Integrating Prior Knowledge into Learning Systems",
+      "doi": "https://doi.org/10.1109/tkde.2021.3079836",
+      "publication_year": 2021,
+      "cited_by_count": 780,
+      "authors": [
+        "Laura von Rueden",
+        "Sebastian Mayer",
+        "Katharina Beckh"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4393353064",
+      "title": "The Role of AI in Hospitals and Clinics: Transforming Healthcare in the 21st Century",
+      "doi": "https://doi.org/10.3390/bioengineering11040337",
+      "publication_year": 2024,
+      "cited_by_count": 776,
+      "authors": [
+        "Shiva Maleki Varnosfaderani",
+        "Mohamad Forouzanfar"
+      ]
+    }
+  ],
+  "temporal_fusion_transformer": [
+    {
+      "id": "https://openalex.org/W3140854437",
+      "title": "Review of deep learning: concepts, CNN architectures, challenges, applications, future directions",
+      "doi": "https://doi.org/10.1186/s40537-021-00444-8",
+      "publication_year": 2021,
+      "cited_by_count": 7559,
+      "authors": [
+        "Laith Alzubaidi",
+        "Jinglan Zhang",
+        "Amjad J. Humaidi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4206484811",
+      "title": "A Metaverse: Taxonomy, Components, Applications, and Open Challenges",
+      "doi": "https://doi.org/10.1109/access.2021.3140175",
+      "publication_year": 2022,
+      "cited_by_count": 1762,
+      "authors": [
+        "Sangmin Park",
+        "Young\u2010Gab Kim"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4210827551",
+      "title": "A survey on sentiment analysis methods, applications, and challenges",
+      "doi": "https://doi.org/10.1007/s10462-022-10144-1",
+      "publication_year": 2022,
+      "cited_by_count": 1425,
+      "authors": [
+        "Mayur Wankhade",
+        "Annavarapu Chandra Sekhara Rao",
+        "Chaitanya Kulkarni"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3074741277",
+      "title": "A Review of Deep Learning in Medical Imaging: Imaging Traits, Technology Trends, Case Studies With Progress Highlights, and Future Promises",
+      "doi": "https://doi.org/10.1109/jproc.2021.3054390",
+      "publication_year": 2021,
+      "cited_by_count": 1000,
+      "authors": [
+        "S. Kevin Zhou",
+        "Hayit Greenspan",
+        "Christos Davatzikos"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4366091323",
+      "title": "Deep learning modelling techniques: current progress, applications, advantages, and challenges",
+      "doi": "https://doi.org/10.1007/s10462-023-10466-8",
+      "publication_year": 2023,
+      "cited_by_count": 962,
+      "authors": [
+        "Shams Forruque Ahmed",
+        "Md. Sakib Bin Alam",
+        "Maruf Hassan"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3174022889",
+      "title": "Spatial-Temporal Fusion Graph Neural Networks for Traffic Flow Forecasting",
+      "doi": "https://doi.org/10.1609/aaai.v35i5.16542",
+      "publication_year": 2021,
+      "cited_by_count": 850,
+      "authors": [
+        "Mengzhang Li",
+        "Zhanxing Zhu"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4365504037",
+      "title": "A survey on deep learning tools dealing with data scarcity: definitions, challenges, solutions, tips, and applications",
+      "doi": "https://doi.org/10.1186/s40537-023-00727-2",
+      "publication_year": 2023,
+      "cited_by_count": 796,
+      "authors": [
+        "Laith Alzubaidi",
+        "Jinshuai Bai",
+        "Aiman Al-Sabaawi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3006087551",
+      "title": "Informed Machine Learning - A Taxonomy and Survey of Integrating Prior Knowledge into Learning Systems",
+      "doi": "https://doi.org/10.1109/tkde.2021.3079836",
+      "publication_year": 2021,
+      "cited_by_count": 780,
+      "authors": [
+        "Laura von Rueden",
+        "Sebastian Mayer",
+        "Katharina Beckh"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2803750062",
+      "title": "Survey on Multi-Access Edge Computing for Internet of Things Realization",
+      "doi": "https://doi.org/10.1109/comst.2018.2849509",
+      "publication_year": 2018,
+      "cited_by_count": 777,
+      "authors": [
+        "Pawani Porambage",
+        "Jude Okwuibe",
+        "Madhusanka Liyanage"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3144404977",
+      "title": "Survey on 6G Frontiers: Trends, Applications, Requirements, Technologies and Future Research",
+      "doi": "https://doi.org/10.1109/ojcoms.2021.3071496",
+      "publication_year": 2021,
+      "cited_by_count": 764,
+      "authors": [
+        "Chamitha de Alwis",
+        "Anshuman Kalla",
+        "Quoc\u2010Viet Pham"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3201870057",
+      "title": "Training Spiking Neural Networks Using Lessons From Deep Learning",
+      "doi": "https://doi.org/10.1109/jproc.2023.3308088",
+      "publication_year": 2023,
+      "cited_by_count": 687,
+      "authors": [
+        "Jason K. Eshraghian",
+        "Max Ward",
+        "Emre Neftci"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4383112908",
+      "title": "Transfer Learning in Deep Reinforcement Learning: A Survey",
+      "doi": "https://doi.org/10.1109/tpami.2023.3292075",
+      "publication_year": 2023,
+      "cited_by_count": 681,
+      "authors": [
+        "Zhuangdi Zhu",
+        "Kaixiang Lin",
+        "Anil K. Jain"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4382464460",
+      "title": "BEVDepth: Acquisition of Reliable Depth for Multi-View 3D Object Detection",
+      "doi": "https://doi.org/10.1609/aaai.v37i2.25233",
+      "publication_year": 2023,
+      "cited_by_count": 658,
+      "authors": [
+        "Yinhao Li",
+        "Zheng Ge",
+        "Guanyi Yu"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3044960932",
+      "title": "Artificial intelligence in the creative industries: a review",
+      "doi": "https://doi.org/10.1007/s10462-021-10039-7",
+      "publication_year": 2021,
+      "cited_by_count": 652,
+      "authors": [
+        "Nantheera Anantrasirichai",
+        "David Bull"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4406170795",
+      "title": "Accurate predictions on small data with a tabular foundation model",
+      "doi": "https://doi.org/10.1038/s41586-024-08328-6",
+      "publication_year": 2025,
+      "cited_by_count": 644,
+      "authors": [
+        "Noah Hollmann",
+        "Samuel M\u00fcller",
+        "Lennart Purucker"
+      ]
+    }
+  ],
+  "patchtst_timeseries": [
+    {
+      "id": "https://openalex.org/W3140854437",
+      "title": "Review of deep learning: concepts, CNN architectures, challenges, applications, future directions",
+      "doi": "https://doi.org/10.1186/s40537-021-00444-8",
+      "publication_year": 2021,
+      "cited_by_count": 7559,
+      "authors": [
+        "Laith Alzubaidi",
+        "Jinglan Zhang",
+        "Amjad J. Humaidi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4382203079",
+      "title": "Are Transformers Effective for Time Series Forecasting?",
+      "doi": "https://doi.org/10.1609/aaai.v37i9.26317",
+      "publication_year": 2023,
+      "cited_by_count": 2623,
+      "authors": [
+        "Ailing Zeng",
+        "Muxi Chen",
+        "Lei Zhang"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4383218913",
+      "title": "Accurate medium-range global weather forecasting with 3D neural networks",
+      "doi": "https://doi.org/10.1038/s41586-023-06185-3",
+      "publication_year": 2023,
+      "cited_by_count": 1426,
+      "authors": [
+        "Kaifeng Bi",
+        "Lingxi Xie",
+        "Hengheng Zhang"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4366091323",
+      "title": "Deep learning modelling techniques: current progress, applications, advantages, and challenges",
+      "doi": "https://doi.org/10.1007/s10462-023-10466-8",
+      "publication_year": 2023,
+      "cited_by_count": 962,
+      "authors": [
+        "Shams Forruque Ahmed",
+        "Md. Sakib Bin Alam",
+        "Maruf Hassan"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4365504037",
+      "title": "A survey on deep learning tools dealing with data scarcity: definitions, challenges, solutions, tips, and applications",
+      "doi": "https://doi.org/10.1186/s40537-023-00727-2",
+      "publication_year": 2023,
+      "cited_by_count": 796,
+      "authors": [
+        "Laith Alzubaidi",
+        "Jinshuai Bai",
+        "Aiman Al-Sabaawi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3006087551",
+      "title": "Informed Machine Learning - A Taxonomy and Survey of Integrating Prior Knowledge into Learning Systems",
+      "doi": "https://doi.org/10.1109/tkde.2021.3079836",
+      "publication_year": 2021,
+      "cited_by_count": 780,
+      "authors": [
+        "Laura von Rueden",
+        "Sebastian Mayer",
+        "Katharina Beckh"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3044960932",
+      "title": "Artificial intelligence in the creative industries: a review",
+      "doi": "https://doi.org/10.1007/s10462-021-10039-7",
+      "publication_year": 2021,
+      "cited_by_count": 652,
+      "authors": [
+        "Nantheera Anantrasirichai",
+        "David Bull"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2921750014",
+      "title": "A systems and control perspective of CPS security",
+      "doi": "https://doi.org/10.1016/j.arcontrol.2019.04.011",
+      "publication_year": 2019,
+      "cited_by_count": 535,
+      "authors": [
+        "Seyed Mehran Dibaji",
+        "Mohammad Pirani",
+        "David Bezalel Flamholz"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4293163051",
+      "title": "Transformers in medical image analysis",
+      "doi": "https://doi.org/10.1016/j.imed.2022.07.002",
+      "publication_year": 2022,
+      "cited_by_count": 438,
+      "authors": [
+        "Kelei He",
+        "Gan Chen",
+        "Zhuoyuan Li"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4322627364",
+      "title": "Deep Learning with Graph Convolutional Networks: An Overview and Latest Applications in Computational Intelligence",
+      "doi": "https://doi.org/10.1155/2023/8342104",
+      "publication_year": 2023,
+      "cited_by_count": 419,
+      "authors": [
+        "Uzair Aslam Bhatti",
+        "Hao Tang",
+        "Guilu Wu"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3207924272",
+      "title": "Self-Supervised Representation Learning: Introduction, advances, and challenges",
+      "doi": "https://doi.org/10.1109/msp.2021.3134634",
+      "publication_year": 2022,
+      "cited_by_count": 401,
+      "authors": [
+        "Linus Ericsson",
+        "Henry Gouk",
+        "Chen Change Loy"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4295854586",
+      "title": "Explainable Artificial Intelligence Applications in Cyber Security: State-of-the-Art in Research",
+      "doi": "https://doi.org/10.1109/access.2022.3204051",
+      "publication_year": 2022,
+      "cited_by_count": 386,
+      "authors": [
+        "Zhibo Zhang",
+        "Hussam Al Hamadi",
+        "Ernesto Damiani"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3118660027",
+      "title": "Classification of Remote Sensing Images Using EfficientNet-B3 CNN Model With Attention",
+      "doi": "https://doi.org/10.1109/access.2021.3051085",
+      "publication_year": 2021,
+      "cited_by_count": 345,
+      "authors": [
+        "Haikel Alhichri",
+        "Asma S. Alswayed",
+        "Yakoub Bazi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4403405969",
+      "title": "How to build the virtual cell with artificial intelligence: Priorities and opportunities",
+      "doi": "https://doi.org/10.1016/j.cell.2024.11.015",
+      "publication_year": 2024,
+      "cited_by_count": 288,
+      "authors": [
+        "Charlotte Bunne",
+        "Yusuf Roohani",
+        "Yanay Rosen"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4388728292",
+      "title": "FuXi: a cascade machine learning forecasting system for 15-day global weather forecast",
+      "doi": "https://doi.org/10.1038/s41612-023-00512-1",
+      "publication_year": 2023,
+      "cited_by_count": 287,
+      "authors": [
+        "Lei Chen",
+        "Xiaohui Zhong",
+        "Feng Zhang"
+      ]
+    }
+  ],
+  "macroeconomic_deep_learning": [
+    {
+      "id": "https://openalex.org/W3198381997",
+      "title": "Deep Learning for Anomaly Detection in Time-Series Data: Review, Analysis, and Guidelines",
+      "doi": "https://doi.org/10.1109/access.2021.3107975",
+      "publication_year": 2021,
+      "cited_by_count": 547,
+      "authors": [
+        "Kukjin Choi",
+        "Jihun Yi",
+        "Changhwa Park"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2595186334",
+      "title": "Measuring news sentiment",
+      "doi": "https://doi.org/10.1016/j.jeconom.2020.07.053",
+      "publication_year": 2020,
+      "cited_by_count": 403,
+      "authors": [
+        "Adam Hale Shapiro",
+        "Moritz Sudhof",
+        "Daniel J. Wilson"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2966153025",
+      "title": "Multivariate Temporal Convolutional Network: A Deep Neural Networks Approach for Multivariate Time Series Forecasting",
+      "doi": "https://doi.org/10.3390/electronics8080876",
+      "publication_year": 2019,
+      "cited_by_count": 368,
+      "authors": [
+        "Renzhuo Wan",
+        "Shuping Mei",
+        "Jun Wang"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3039901811",
+      "title": "Measuring objective and subjective well-being: dimensions and data sources",
+      "doi": "https://doi.org/10.1007/s41060-020-00224-2",
+      "publication_year": 2020,
+      "cited_by_count": 348,
+      "authors": [
+        "Vasiliki Voukelatou",
+        "Lorenzo Gabrielli",
+        "Ioanna Miliou"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2996608372",
+      "title": "How is machine learning useful for macroeconomic forecasting?",
+      "doi": "https://doi.org/10.1002/jae.2910",
+      "publication_year": 2022,
+      "cited_by_count": 217,
+      "authors": [
+        "Philippe Goulet Coulombe",
+        "Maxime Leroux",
+        "Dalibor Stevanovi\u0107"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2908061993",
+      "title": "Forecasting carbon prices in the Shenzhen market, China: The role of mixed-frequency factors",
+      "doi": "https://doi.org/10.1016/j.energy.2019.01.009",
+      "publication_year": 2019,
+      "cited_by_count": 208,
+      "authors": [
+        "Meng Han",
+        "Lili Ding",
+        "Xin Zhao"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3197255421",
+      "title": "COVID-19 impact on global maritime mobility",
+      "doi": "https://doi.org/10.1038/s41598-021-97461-7",
+      "publication_year": 2021,
+      "cited_by_count": 148,
+      "authors": [
+        "Leonardo M. Millefiori",
+        "Paolo Braca",
+        "Dimitris Zissis"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2900532930",
+      "title": "ECONOMETRICS MEETS SENTIMENT: AN OVERVIEW OF METHODOLOGY AND APPLICATIONS",
+      "doi": "https://doi.org/10.1111/joes.12370",
+      "publication_year": 2020,
+      "cited_by_count": 137,
+      "authors": [
+        "Andres Algaba",
+        "David Ardia",
+        "Keven Bluteau"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4407276595",
+      "title": "Deep learning for time series forecasting: a survey",
+      "doi": "https://doi.org/10.1007/s13042-025-02560-w",
+      "publication_year": 2025,
+      "cited_by_count": 131,
+      "authors": [
+        "Xiangjie Kong",
+        "Zhenghao Chen",
+        "Weiyao Liu"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3126443786",
+      "title": "Machine Learning in Economics and Finance",
+      "doi": "https://doi.org/10.1007/s10614-021-10094-w",
+      "publication_year": 2021,
+      "cited_by_count": 125,
+      "authors": [
+        "Periklis Gogas",
+        "Th\u00e9ophilos Papadimitriou"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3144531949",
+      "title": "Long-term time-series pollution forecast using statistical and deep learning methods",
+      "doi": "https://doi.org/10.1007/s00521-021-05901-2",
+      "publication_year": 2021,
+      "cited_by_count": 112,
+      "authors": [
+        "Pritthijit Nath",
+        "Pratik Saha",
+        "Asif Iqbal Middya"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4387687716",
+      "title": "AI-based forecasting for optimised solar energy management and smart grid efficiency",
+      "doi": "https://doi.org/10.1080/00207543.2023.2269565",
+      "publication_year": 2023,
+      "cited_by_count": 111,
+      "authors": [
+        "Pierre Bouquet",
+        "Ilya Jackson",
+        "Mostafa Nick"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3137896786",
+      "title": "A statistical analysis of the novel coronavirus (COVID-19) in Italy and Spain",
+      "doi": "https://doi.org/10.1371/journal.pone.0249037",
+      "publication_year": 2021,
+      "cited_by_count": 97,
+      "authors": [
+        "Jeffrey Chu"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2900170168",
+      "title": "Innovative technology in financial supervision (suptech): The experience of early users",
+      "doi": null,
+      "publication_year": 2018,
+      "cited_by_count": 96,
+      "authors": [
+        "Dirk Broeders",
+        "Jermy Prenio"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3024337173",
+      "title": "World Seaborne Trade in Real Time: A Proof of Concept for Building AIS-based Nowcasts from Scratch",
+      "doi": "https://doi.org/10.5089/9781513544106.001",
+      "publication_year": 2020,
+      "cited_by_count": 92,
+      "authors": [
+        "Diego Cerdeiro",
+        "Andr\u00e1s Kom\u00e1romi",
+        "Yang Liu"
+      ]
+    }
+  ],
+  "nowcasting_neural_network": [
+    {
+      "id": "https://openalex.org/W4389195056",
+      "title": "Global Carbon Budget 2023",
+      "doi": "https://doi.org/10.5194/essd-15-5301-2023",
+      "publication_year": 2023,
+      "cited_by_count": 1366,
+      "authors": [
+        "Pierre Friedlingstein",
+        "Michael O\u2019Sullivan",
+        "Matthew W. Jones"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2595186334",
+      "title": "Measuring news sentiment",
+      "doi": "https://doi.org/10.1016/j.jeconom.2020.07.053",
+      "publication_year": 2020,
+      "cited_by_count": 403,
+      "authors": [
+        "Adam Hale Shapiro",
+        "Moritz Sudhof",
+        "Daniel J. Wilson"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3039901811",
+      "title": "Measuring objective and subjective well-being: dimensions and data sources",
+      "doi": "https://doi.org/10.1007/s41060-020-00224-2",
+      "publication_year": 2020,
+      "cited_by_count": 348,
+      "authors": [
+        "Vasiliki Voukelatou",
+        "Lorenzo Gabrielli",
+        "Ioanna Miliou"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3013772641",
+      "title": "Mapping the landscape of Artificial Intelligence applications against COVID-19",
+      "doi": "https://doi.org/10.1613/jair.1.12162",
+      "publication_year": 2020,
+      "cited_by_count": 338,
+      "authors": [
+        "Joseph Bullock",
+        "Alexandra Luccioni",
+        "Katherine Hoffman Pham"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4392984771",
+      "title": "Global prediction of extreme floods in ungauged watersheds",
+      "doi": "https://doi.org/10.1038/s41586-024-07145-1",
+      "publication_year": 2024,
+      "cited_by_count": 311,
+      "authors": [
+        "Grey Nearing",
+        "D\u00e9borah Cohen",
+        "Vusumuzi Dube"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3015698531",
+      "title": "Composite Monte Carlo decision making under high uncertainty of novel coronavirus epidemic using hybridized deep learning and fuzzy rule induction",
+      "doi": "https://doi.org/10.1016/j.asoc.2020.106282",
+      "publication_year": 2020,
+      "cited_by_count": 233,
+      "authors": [
+        "Simon Fong",
+        "Herrera Viedma, Enrique"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2996608372",
+      "title": "How is machine learning useful for macroeconomic forecasting?",
+      "doi": "https://doi.org/10.1002/jae.2910",
+      "publication_year": 2022,
+      "cited_by_count": 217,
+      "authors": [
+        "Philippe Goulet Coulombe",
+        "Maxime Leroux",
+        "Dalibor Stevanovi\u0107"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2908061993",
+      "title": "Forecasting carbon prices in the Shenzhen market, China: The role of mixed-frequency factors",
+      "doi": "https://doi.org/10.1016/j.energy.2019.01.009",
+      "publication_year": 2019,
+      "cited_by_count": 208,
+      "authors": [
+        "Meng Han",
+        "Lili Ding",
+        "Xin Zhao"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4319316266",
+      "title": "Application of Machine Learning in Water Resources Management: A Systematic Literature Review",
+      "doi": "https://doi.org/10.3390/w15040620",
+      "publication_year": 2023,
+      "cited_by_count": 158,
+      "authors": [
+        "Fatemeh Ghobadi",
+        "Doosun Kang"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3126443786",
+      "title": "Machine Learning in Economics and Finance",
+      "doi": "https://doi.org/10.1007/s10614-021-10094-w",
+      "publication_year": 2021,
+      "cited_by_count": 125,
+      "authors": [
+        "Periklis Gogas",
+        "Th\u00e9ophilos Papadimitriou"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3144558234",
+      "title": "Application of Machine Learning Techniques in Injection Molding Quality Prediction: Implications on Sustainable Manufacturing Industry",
+      "doi": "https://doi.org/10.3390/su13084120",
+      "publication_year": 2021,
+      "cited_by_count": 118,
+      "authors": [
+        "Hail Jung",
+        "Jinsu Jeon",
+        "Dahui Choi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4393002303",
+      "title": "On the Opportunities and Challenges of Foundation Models for GeoAI (Vision Paper)",
+      "doi": "https://doi.org/10.1145/3653070",
+      "publication_year": 2024,
+      "cited_by_count": 100,
+      "authors": [
+        "Gengchen Mai",
+        "Weiming Huang",
+        "Jin Sun"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4296127264",
+      "title": "Machine learning can guide food security efforts when primary data are not available",
+      "doi": "https://doi.org/10.1038/s43016-022-00587-8",
+      "publication_year": 2022,
+      "cited_by_count": 98,
+      "authors": [
+        "Giulia Martini",
+        "Alberto Bracci",
+        "Lorenzo Riches"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2981051507",
+      "title": "Invited perspectives: How machine learning will change flood risk and impact assessment",
+      "doi": "https://doi.org/10.5194/nhess-20-1149-2020",
+      "publication_year": 2020,
+      "cited_by_count": 93,
+      "authors": [
+        "Dennis Wagenaar",
+        "Alex Curran",
+        "Mariano Balbi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3090320609",
+      "title": "Impact of COVID-19 Measures on Short-Term Electricity Consumption in the Most Affected EU Countries and USA States",
+      "doi": "https://doi.org/10.1016/j.isci.2020.101639",
+      "publication_year": 2020,
+      "cited_by_count": 81,
+      "authors": [
+        "Javier L\u00f3pez Prol",
+        "O Sungmin"
+      ]
+    }
+  ],
+  "factor_model_forecasting_large": [
+    {
+      "id": "https://openalex.org/W3159759907",
+      "title": "Mandatory CSR and sustainability reporting: economic analysis and literature review",
+      "doi": "https://doi.org/10.1007/s11142-021-09609-5",
+      "publication_year": 2021,
+      "cited_by_count": 1616,
+      "authors": [
+        "Hans Bonde Christensen",
+        "Luzi Hail",
+        "Christian Leuz"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3021822145",
+      "title": "Railroads of the Raj: Estimating the Impact of Transportation Infrastructure",
+      "doi": "https://doi.org/10.1257/aer.20101199",
+      "publication_year": 2018,
+      "cited_by_count": 1562,
+      "authors": [
+        "Dave Donaldson"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2794778778",
+      "title": "Statistical and Machine Learning forecasting methods: Concerns and ways forward",
+      "doi": "https://doi.org/10.1371/journal.pone.0194889",
+      "publication_year": 2018,
+      "cited_by_count": 1394,
+      "authors": [
+        "Spyros Makridakis",
+        "Evangelos Spiliotis",
+        "Vassilios Assimakopoulos"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2895330846",
+      "title": "Promoting novelty, rigor, and style in energy social science: Towards codes of practice for appropriate methods and research design",
+      "doi": "https://doi.org/10.1016/j.erss.2018.07.007",
+      "publication_year": 2018,
+      "cited_by_count": 1147,
+      "authors": [
+        "Benjamin K. Sovacool",
+        "Jonn Axsen",
+        "Steve Sorrell"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2799345028",
+      "title": "RETRACTED: Cryptocurrencies as a financial asset: A systematic analysis",
+      "doi": "https://doi.org/10.1016/j.irfa.2018.09.003",
+      "publication_year": 2018,
+      "cited_by_count": 1145,
+      "authors": [
+        "Shaen Corbet",
+        "Brian M. Lucey",
+        "Andrew Urquhart"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3044853528",
+      "title": "Selecting critical features for data classification based on machine learning methods",
+      "doi": "https://doi.org/10.1186/s40537-020-00327-4",
+      "publication_year": 2020,
+      "cited_by_count": 977,
+      "authors": [
+        "Rung-Ching Chen",
+        "Christine Dewi",
+        "Su-Wen Huang"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4392663706",
+      "title": "Global age-sex-specific mortality, life expectancy, and population estimates in 204 countries and territories and 811 subnational locations, 1950\u20132021, and the impact of the COVID-19 pandemic: a comprehensive demographic analysis for the Global Burden of Disease Study 2021",
+      "doi": "https://doi.org/10.1016/s0140-6736(24)00476-8",
+      "publication_year": 2024,
+      "cited_by_count": 959,
+      "authors": [
+        "Masayuki Teramoto",
+        "Hmwe Hmwe Kyu",
+        "Amirali Aali"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3026479760",
+      "title": "Financial contagion during COVID\u201319 crisis",
+      "doi": "https://doi.org/10.1016/j.frl.2020.101604",
+      "publication_year": 2020,
+      "cited_by_count": 873,
+      "authors": [
+        "Md Akhtaruzzaman",
+        "Sabri Boubaker",
+        "Ahmet \u015eensoy"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3020975734",
+      "title": "Will COVID-19 fiscal recovery packages accelerate or retard progress on climate change?",
+      "doi": "https://doi.org/10.1093/oxrep/graa015",
+      "publication_year": 2020,
+      "cited_by_count": 762,
+      "authors": [
+        "Cameron Hepburn",
+        "Brian O\u2019Callaghan",
+        "Nicholas Stern"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2907798246",
+      "title": "Exchange Arrangements Entering the Twenty-First Century: Which Anchor will Hold?*",
+      "doi": "https://doi.org/10.1093/qje/qjy033",
+      "publication_year": 2019,
+      "cited_by_count": 757,
+      "authors": [
+        "Ethan Ilzetzki",
+        "Carmen Reinhart",
+        "Kenneth Rogoff"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3199565759",
+      "title": "Aquatic foods to nourish nations",
+      "doi": "https://doi.org/10.1038/s41586-021-03917-1",
+      "publication_year": 2021,
+      "cited_by_count": 622,
+      "authors": [
+        "Christopher D. Golden",
+        "J. Zachary Koehn",
+        "Alon Shepon"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2926538648",
+      "title": "De-globalization: Theories, predictions, and opportunities for international business research",
+      "doi": "https://doi.org/10.1057/s41267-019-00219-7",
+      "publication_year": 2019,
+      "cited_by_count": 614,
+      "authors": [
+        "Michael A. Witt"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4283170666",
+      "title": "Taxonomy of Risks posed by Language Models",
+      "doi": "https://doi.org/10.1145/3531146.3533088",
+      "publication_year": 2022,
+      "cited_by_count": 606,
+      "authors": [
+        "Laura Weidinger",
+        "Jonathan Uesato",
+        "Maribeth Rauh"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2943121181",
+      "title": "Topic Modeling in Management Research: Rendering New Theory from Textual Data",
+      "doi": "https://doi.org/10.5465/annals.2017.0099",
+      "publication_year": 2019,
+      "cited_by_count": 591,
+      "authors": [
+        "Timothy R. Hannigan",
+        "Richard Franciscus Johannes Haans",
+        "Keyvan Vakili"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2950320514",
+      "title": "Climate as a risk factor for armed conflict",
+      "doi": "https://doi.org/10.1038/s41586-019-1300-6",
+      "publication_year": 2019,
+      "cited_by_count": 584,
+      "authors": [
+        "Katharine J. Mach",
+        "Caroline M. Kraan",
+        "W. Neil Adger"
+      ]
+    }
+  ],
+  "gdp_forecasting_machine_learning": [
+    {
+      "id": "https://openalex.org/W2969625533",
+      "title": "Artificial Intelligence (AI): Multidisciplinary perspectives on emerging challenges, opportunities, and agenda for research, practice and policy",
+      "doi": "https://doi.org/10.1016/j.ijinfomgt.2019.08.002",
+      "publication_year": 2019,
+      "cited_by_count": 4060,
+      "authors": [
+        "Yogesh K. Dwivedi",
+        "Laurie Hughes",
+        "Elvira Ismagilova"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3093432062",
+      "title": "Global Carbon Budget 2020",
+      "doi": "https://doi.org/10.5194/essd-12-3269-2020",
+      "publication_year": 2020,
+      "cited_by_count": 2537,
+      "authors": [
+        "Pierre Friedlingstein",
+        "Michael O\u2019Sullivan",
+        "Matthew W. Jones"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2922903482",
+      "title": "Automation and New Tasks: How Technology Displaces and Reinstates Labor",
+      "doi": "https://doi.org/10.1257/jep.33.2.3",
+      "publication_year": 2019,
+      "cited_by_count": 2193,
+      "authors": [
+        "Daron Acemo\u011flu",
+        "Pascual Restrepo"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4322576964",
+      "title": "On the Road to 6G: Visions, Requirements, Key Technologies, and Testbeds",
+      "doi": "https://doi.org/10.1109/comst.2023.3249835",
+      "publication_year": 2023,
+      "cited_by_count": 1919,
+      "authors": [
+        "Cheng\u2010Xiang Wang",
+        "Xiaohu You",
+        "Xiqi Gao"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4308697725",
+      "title": "Global Carbon Budget 2022",
+      "doi": "https://doi.org/10.5194/essd-14-4811-2022",
+      "publication_year": 2022,
+      "cited_by_count": 1811,
+      "authors": [
+        "Pierre Friedlingstein",
+        "Michael O\u2019Sullivan",
+        "Matthew W. Jones"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2920135474",
+      "title": "Past and future spread of the arbovirus vectors Aedes aegypti and Aedes albopictus",
+      "doi": "https://doi.org/10.1038/s41564-019-0376-y",
+      "publication_year": 2019,
+      "cited_by_count": 1462,
+      "authors": [
+        "Moritz U. G. Kraemer",
+        "Robert C. Reiner",
+        "Oliver J. Brady"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2952094509",
+      "title": "The current and future global distribution and population at risk of dengue",
+      "doi": "https://doi.org/10.1038/s41564-019-0476-8",
+      "publication_year": 2019,
+      "cited_by_count": 1404,
+      "authors": [
+        "Jane P. Messina",
+        "Oliver J. Brady",
+        "Nick Golding"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4400789899",
+      "title": "On world development indicators",
+      "doi": "https://doi.org/10.25634/mirbis.2021.2.1",
+      "publication_year": 2021,
+      "cited_by_count": 1311,
+      "authors": [
+        "\u042e.\u041f. \u041b\u0443\u043a\u0430\u0448\u0438\u043d",
+        "\u041b.\u0418. \u0420\u0430\u0445\u043b\u0438\u043d\u0430"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3122263577",
+      "title": "Feverish Stock Price Reactions to COVID-19*",
+      "doi": "https://doi.org/10.1093/rcfs/cfaa012",
+      "publication_year": 2020,
+      "cited_by_count": 1230,
+      "authors": [
+        "Stefano Ramelli",
+        "Alexander F. Wagner"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2964535757",
+      "title": "Internet-of-Things (IoT)-Based Smart Agriculture: Toward Making the Fields Talk",
+      "doi": "https://doi.org/10.1109/access.2019.2932609",
+      "publication_year": 2019,
+      "cited_by_count": 1226,
+      "authors": [
+        "Muhammad Ayaz",
+        "Mohammad Ammad-Uddin",
+        "Zubair Sharif"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2800190939",
+      "title": "A low energy demand scenario for meeting the 1.5\u2009\u00b0C target and sustainable development goals without negative emission technologies",
+      "doi": "https://doi.org/10.1038/s41560-018-0172-6",
+      "publication_year": 2018,
+      "cited_by_count": 1134,
+      "authors": [
+        "Arnulf Gr\u00fcbler",
+        "Charlie Wilson",
+        "Nuno Bento"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3038273726",
+      "title": "Investigating the emerging COVID-19 research trends in the field of business and management: A bibliometric analysis approach",
+      "doi": "https://doi.org/10.1016/j.jbusres.2020.06.057",
+      "publication_year": 2020,
+      "cited_by_count": 1069,
+      "authors": [
+        "Surabhi Verma",
+        "Anders Gustafsson"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3013534207",
+      "title": "Technologies and policies to decarbonize global industry: Review and assessment of mitigation drivers through 2070",
+      "doi": "https://doi.org/10.1016/j.apenergy.2020.114848",
+      "publication_year": 2020,
+      "cited_by_count": 993,
+      "authors": [
+        "Jeffrey Rissman",
+        "Chris Bataille",
+        "Eric Masanet"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3001832800",
+      "title": "Global projections of future urban land expansion under shared socioeconomic pathways",
+      "doi": "https://doi.org/10.1038/s41467-020-14386-x",
+      "publication_year": 2020,
+      "cited_by_count": 854,
+      "authors": [
+        "Guangzhao Chen",
+        "Xia Li",
+        "Xiaoping Liu"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4293229829",
+      "title": "Unlocking the value of artificial intelligence in human resource management through AI capability framework",
+      "doi": "https://doi.org/10.1016/j.hrmr.2022.100899",
+      "publication_year": 2022,
+      "cited_by_count": 813,
+      "authors": [
+        "Soumyadeb Chowdhury",
+        "Prasanta Kumar Dey",
+        "Sian Joel-Edgar"
+      ]
+    }
+  ],
+  "covid_economic_forecasting_disruption": [
+    {
+      "id": "https://openalex.org/W4401164724",
+      "title": "Dementia prevention, intervention, and care: 2024 report of the Lancet standing Commission",
+      "doi": "https://doi.org/10.1016/s0140-6736(24)01296-0",
+      "publication_year": 2024,
+      "cited_by_count": 2995,
+      "authors": [
+        "Gill Livingston",
+        "Jonathan Huntley",
+        "Kathy Liu"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3036495543",
+      "title": "Impacts of epidemic outbreaks on supply chains: mapping a research agenda amid the COVID-19 pandemic through a structured literature review",
+      "doi": "https://doi.org/10.1007/s10479-020-03685-7",
+      "publication_year": 2020,
+      "cited_by_count": 953,
+      "authors": [
+        "Maciel M. Queiroz",
+        "Dmitry Ivanov",
+        "Alexandre Dolgui"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3191826040",
+      "title": "COVID-19 and digitalization: The great acceleration",
+      "doi": "https://doi.org/10.1016/j.jbusres.2021.08.011",
+      "publication_year": 2021,
+      "cited_by_count": 896,
+      "authors": [
+        "Joseph Amankwah\u2010Amoah",
+        "Zaheer Khan",
+        "Geoffrey Wood"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4313310852",
+      "title": "Metaverse marketing: How the metaverse will shape the future of consumer research and practice",
+      "doi": "https://doi.org/10.1002/mar.21767",
+      "publication_year": 2022,
+      "cited_by_count": 830,
+      "authors": [
+        "Yogesh K. Dwivedi",
+        "Laurie Hughes",
+        "Yichuan Wang"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3020975734",
+      "title": "Will COVID-19 fiscal recovery packages accelerate or retard progress on climate change?",
+      "doi": "https://doi.org/10.1093/oxrep/graa015",
+      "publication_year": 2020,
+      "cited_by_count": 762,
+      "authors": [
+        "Cameron Hepburn",
+        "Brian O\u2019Callaghan",
+        "Nicholas Stern"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3022632670",
+      "title": "Impacts of social and economic factors on the transmission of coronavirus disease 2019 (COVID-19) in China",
+      "doi": "https://doi.org/10.1007/s00148-020-00778-2",
+      "publication_year": 2020,
+      "cited_by_count": 547,
+      "authors": [
+        "Yun Qiu",
+        "Xi Chen",
+        "Wei Shi"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4321599671",
+      "title": "Impact of supply chain digitalization on supply chain resilience and performance: A multi-mediation model",
+      "doi": "https://doi.org/10.1016/j.ijpe.2023.108817",
+      "publication_year": 2023,
+      "cited_by_count": 542,
+      "authors": [
+        "Nanyang Zhao",
+        "Jiangtao Hong",
+        "Kwok Hung Lau"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4295127154",
+      "title": "Artificial intelligence in innovation research: A systematic review, conceptual framework, and future research directions",
+      "doi": "https://doi.org/10.1016/j.technovation.2022.102623",
+      "publication_year": 2022,
+      "cited_by_count": 517,
+      "authors": [
+        "Marcello M. Mariani",
+        "Isa Machado",
+        "Vittoria Magrelli"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4319986951",
+      "title": "Metaverse for Healthcare: A Survey on Potential Applications, Challenges and Future Directions",
+      "doi": "https://doi.org/10.1109/access.2023.3241628",
+      "publication_year": 2023,
+      "cited_by_count": 489,
+      "authors": [
+        "Rajeswari Chengoden",
+        "Nancy Victor",
+        "Thien Huynh\u2010The"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3134541358",
+      "title": "Preventive psychiatry: a blueprint for improving the mental health of young people",
+      "doi": "https://doi.org/10.1002/wps.20869",
+      "publication_year": 2021,
+      "cited_by_count": 470,
+      "authors": [
+        "Paolo Fusar\u2010Poli",
+        "Christoph U. Correll",
+        "Celso Arango"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4291397630",
+      "title": "American Association of Clinical Endocrinology Clinical Practice Guideline: Developing a Diabetes Mellitus Comprehensive Care Plan\u20142022 Update",
+      "doi": "https://doi.org/10.1016/j.eprac.2022.08.002",
+      "publication_year": 2022,
+      "cited_by_count": 469,
+      "authors": [
+        "Lawrence Blonde",
+        "Guillermo E. Umpierrez",
+        "Sarah Reddy"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3120887917",
+      "title": "Disruptions and resilience in global container shipping and ports: the COVID-19 pandemic versus the 2008\u20132009 financial crisis",
+      "doi": "https://doi.org/10.1057/s41278-020-00180-5",
+      "publication_year": 2021,
+      "cited_by_count": 464,
+      "authors": [
+        "Theo Notteboom",
+        "Thanos Pallis",
+        "Jean\u2010Paul Rodrigue"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3042149128",
+      "title": "COVID-19\u2019s impact on the hospitality workforce \u2013 new crisis or amplification of the norm?",
+      "doi": "https://doi.org/10.1108/ijchm-04-2020-0314",
+      "publication_year": 2020,
+      "cited_by_count": 464,
+      "authors": [
+        "Tom Baum",
+        "Shelagh Mooney",
+        "Richard Robinson"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3021571418",
+      "title": "The Coronavirus crisis in B2B settings: Crisis uniqueness and managerial implications based on social exchange theory",
+      "doi": "https://doi.org/10.1016/j.indmarman.2020.05.004",
+      "publication_year": 2020,
+      "cited_by_count": 455,
+      "authors": [
+        "Roberto Mora Cortez",
+        "Wesley J. Johnston"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3041362921",
+      "title": "Security, Privacy and Risks Within Smart Cities: Literature Review and Development of a Smart City Interaction Framework",
+      "doi": "https://doi.org/10.1007/s10796-020-10044-1",
+      "publication_year": 2020,
+      "cited_by_count": 453,
+      "authors": [
+        "Elvira Ismagilova",
+        "Laurie Hughes",
+        "Nripendra P. Rana"
+      ]
+    }
+  ],
+  "bayesian_changepoint_trend": [
+    {
+      "id": "https://openalex.org/W3042068575",
+      "title": "A Simple New Approach to Variable Selection in Regression, with Application to Genetic Fine Mapping",
+      "doi": "https://doi.org/10.1111/rssb.12388",
+      "publication_year": 2020,
+      "cited_by_count": 1152,
+      "authors": [
+        "Gao Wang",
+        "Abhishek Sarkar",
+        "Peter Carbonetto"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2783963507",
+      "title": "Planning and Decision-Making for Autonomous Vehicles",
+      "doi": "https://doi.org/10.1146/annurev-control-060117-105157",
+      "publication_year": 2018,
+      "cited_by_count": 934,
+      "authors": [
+        "Wilko Schwarting",
+        "Javier Alonso\u2013Mora",
+        "Daniela Rus"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2906498146",
+      "title": "DeepAnT: A Deep Learning Approach for Unsupervised Anomaly Detection in Time Series",
+      "doi": "https://doi.org/10.1109/access.2018.2886457",
+      "publication_year": 2018,
+      "cited_by_count": 658,
+      "authors": [
+        "Mohsin Munir",
+        "Shoaib Ahmed Siddiqui",
+        "Andreas Dengel"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3033920763",
+      "title": "Human motion trajectory prediction: a survey",
+      "doi": "https://doi.org/10.1177/0278364920917446",
+      "publication_year": 2020,
+      "cited_by_count": 618,
+      "authors": [
+        "Andrey Rudenko",
+        "Luigi Palmieri",
+        "Michael Herman"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2965689387",
+      "title": "Detecting change-point, trend, and seasonality in satellite time series data to track abrupt changes and nonlinear dynamics: A Bayesian ensemble algorithm",
+      "doi": "https://doi.org/10.1016/j.rse.2019.04.034",
+      "publication_year": 2019,
+      "cited_by_count": 481,
+      "authors": [
+        "Kaiguang Zhao",
+        "Michael A. Wulder",
+        "Tongxi Hu"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2971524362",
+      "title": "Widespread drying of European peatlands in recent centuries",
+      "doi": "https://doi.org/10.1038/s41561-019-0462-z",
+      "publication_year": 2019,
+      "cited_by_count": 284,
+      "authors": [
+        "Graeme T. Swindles",
+        "Paul J. Morris",
+        "Donal Mullan"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4319311840",
+      "title": "Shifts in vegetation activity of terrestrial ecosystems attributable to climate trends",
+      "doi": "https://doi.org/10.1038/s41561-022-01114-x",
+      "publication_year": 2023,
+      "cited_by_count": 243,
+      "authors": [
+        "Steven I. Higgins",
+        "Timo Conradi",
+        "Edward Muhoko"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4288885957",
+      "title": "A survey of robot manipulation in contact",
+      "doi": "https://doi.org/10.1016/j.robot.2022.104224",
+      "publication_year": 2022,
+      "cited_by_count": 141,
+      "authors": [
+        "Markku Suomalainen",
+        "Yiannis Karayiannidis",
+        "Ville Kyrki"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3000221245",
+      "title": "Pending recovery in the strength of the meridional overturning circulation at 26\u00b0\u2009N",
+      "doi": "https://doi.org/10.5194/os-16-863-2020",
+      "publication_year": 2020,
+      "cited_by_count": 124,
+      "authors": [
+        "Ben Moat",
+        "David Smeed",
+        "Eleanor Frajka\u2010Williams"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3129886410",
+      "title": "NDVI Indicates Long-Term Dynamics of Vegetation and Its Driving Forces from Climatic and Anthropogenic Factors in Mongolian Plateau",
+      "doi": "https://doi.org/10.3390/rs13040688",
+      "publication_year": 2021,
+      "cited_by_count": 108,
+      "authors": [
+        "Enliang Guo",
+        "Rui Wang",
+        "Cailin Wang"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4394939074",
+      "title": "Explainable Predictive Maintenance: A Survey of Current Methods, Challenges and Opportunities",
+      "doi": "https://doi.org/10.1109/access.2024.3391130",
+      "publication_year": 2024,
+      "cited_by_count": 92,
+      "authors": [
+        "Logan Cummins",
+        "Alexander Sommers",
+        "Somayeh Bakhtiari Ramezani"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3129376220",
+      "title": "Social networks predict the life and death of honey bees",
+      "doi": "https://doi.org/10.1038/s41467-021-21212-5",
+      "publication_year": 2021,
+      "cited_by_count": 87,
+      "authors": [
+        "Benjamin Wild",
+        "David M Dormagen",
+        "Adrian Zachariae"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4391169697",
+      "title": "Data-Driven Process Monitoring and Fault Diagnosis: A Comprehensive Survey",
+      "doi": "https://doi.org/10.3390/pr12020251",
+      "publication_year": 2024,
+      "cited_by_count": 80,
+      "authors": [
+        "Afr\u00e2nio Melo",
+        "Maur\u00edcio Melo C\u00e2mara",
+        "Jos\u00e9 Carlos Pinto"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3024736694",
+      "title": "SCDNA: a serially complete precipitation and temperature dataset for North America from 1979 to 2018",
+      "doi": "https://doi.org/10.5194/essd-12-2381-2020",
+      "publication_year": 2020,
+      "cited_by_count": 79,
+      "authors": [
+        "Guoqiang Tang",
+        "Martyn Clark",
+        "Andrew J. Newman"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2802825296",
+      "title": "Relating N2O emissions during biological nitrogen removal with operating conditions using multivariate statistical techniques",
+      "doi": "https://doi.org/10.1016/j.watres.2018.04.052",
+      "publication_year": 2018,
+      "cited_by_count": 77,
+      "authors": [
+        "V. Vasilaki",
+        "Eveline I.P. Volcke",
+        "Asoke K. Nandi"
+      ]
+    }
+  ],
+  "regime_switching_macro": [
+    {
+      "id": "https://openalex.org/W2799345028",
+      "title": "RETRACTED: Cryptocurrencies as a financial asset: A systematic analysis",
+      "doi": "https://doi.org/10.1016/j.irfa.2018.09.003",
+      "publication_year": 2018,
+      "cited_by_count": 1145,
+      "authors": [
+        "Shaen Corbet",
+        "Brian M. Lucey",
+        "Andrew Urquhart"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2605947465",
+      "title": "Using Stacking to Average Bayesian Predictive Distributions (with Discussion)",
+      "doi": "https://doi.org/10.1214/17-ba1091",
+      "publication_year": 2018,
+      "cited_by_count": 482,
+      "authors": [
+        "Yuling Yao",
+        "Aki Vehtari",
+        "Daniel Simpson"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4321202022",
+      "title": "The impact of the Russian-Ukrainian war on global financial markets",
+      "doi": "https://doi.org/10.1016/j.irfa.2023.102598",
+      "publication_year": 2023,
+      "cited_by_count": 298,
+      "authors": [
+        "Marwan Izzeldin",
+        "Yaz G\u0171lnur Murado\u011flu",
+        "Vasileios Pappas"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2901961682",
+      "title": "What Remains of Cross-Country Convergence?",
+      "doi": "https://doi.org/10.1257/jel.20181207",
+      "publication_year": 2020,
+      "cited_by_count": 289,
+      "authors": [
+        "Paul A. Johnson",
+        "Chris Papageorgiou"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2789450125",
+      "title": "Does Foreign Direct Investment Generate Economic Growth? A New Empirical Approach Applied to Spain",
+      "doi": "https://doi.org/10.1080/00130095.2017.1393312",
+      "publication_year": 2018,
+      "cited_by_count": 248,
+      "authors": [
+        "Jorge Bermejo Carbonell",
+        "Richard A. Werner"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3087230900",
+      "title": "The dynamic links among energy consumption, tourism growth, and the ecological footprint: the role of environmental quality in 38 IEA countries",
+      "doi": "https://doi.org/10.1007/s11356-020-10861-6",
+      "publication_year": 2020,
+      "cited_by_count": 232,
+      "authors": [
+        "Irfan Khan",
+        "Fujun Hou"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3173403582",
+      "title": "Does\u00a0economic complexity matter for environmental sustainability? Using ecological footprint as an indicator",
+      "doi": "https://doi.org/10.1007/s10668-021-01625-4",
+      "publication_year": 2021,
+      "cited_by_count": 218,
+      "authors": [
+        "Muhammad Zahid Rafique",
+        "Abdul Majeed Nadeem",
+        "Wanjun Xia"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2924006879",
+      "title": "More is different ... and complex! the case for agent-based macroeconomics",
+      "doi": "https://doi.org/10.1007/s00191-019-00609-y",
+      "publication_year": 2019,
+      "cited_by_count": 211,
+      "authors": [
+        "Giovanni Dosi",
+        "Andrea Roventini"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2901170547",
+      "title": "Learning from History: Volatility and Financial Crises",
+      "doi": "https://doi.org/10.1093/rfs/hhy049",
+      "publication_year": 2018,
+      "cited_by_count": 189,
+      "authors": [
+        "J\u00f3n Dan\u0131\u0301elsson",
+        "Marcela Valenzuela",
+        "Ilknur Zer"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2922583138",
+      "title": "The long-run information effect of central bank communication",
+      "doi": "https://doi.org/10.1016/j.jmoneco.2019.09.002",
+      "publication_year": 2019,
+      "cited_by_count": 174,
+      "authors": [
+        "Stephen Hansen",
+        "Michael McMahon",
+        "Matthew Tong"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3123830486",
+      "title": "Are Low Interest Rates Deflationary? A Paradox of Perfect-Foresight Analysis",
+      "doi": "https://doi.org/10.1257/aer.20170110",
+      "publication_year": 2019,
+      "cited_by_count": 169,
+      "authors": [
+        "Mariana Garc\u00eda-Schmidt",
+        "Michael Woodford"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2621475972",
+      "title": "Implications of oil prices shocks for the major emerging economies: A comparative analysis of BRICS",
+      "doi": "https://doi.org/10.1016/j.eneco.2018.09.023",
+      "publication_year": 2018,
+      "cited_by_count": 150,
+      "authors": [
+        "Muhammad Ali Nasir",
+        "Lutchmee Naidoo",
+        "Muhammad Shahbaz"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2905296529",
+      "title": "Dependences and volatility spillovers between the oil and stock markets: New evidence from the copula and VAR-BEKK-GARCH models",
+      "doi": "https://doi.org/10.1016/j.irfa.2018.11.007",
+      "publication_year": 2019,
+      "cited_by_count": 150,
+      "authors": [
+        "Lean Yu",
+        "Rui Zha",
+        "Dimitrios Stafylas"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W2619453511",
+      "title": "Economic Policy Uncertainty Spillovers in Booms and Busts",
+      "doi": "https://doi.org/10.1111/obes.12323",
+      "publication_year": 2019,
+      "cited_by_count": 144,
+      "authors": [
+        "Giovanni Caggiano",
+        "Efrem Castelnuovo",
+        "Juan Manuel Figueres"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W3037145595",
+      "title": "The impact of Covid-19 on G7 stock markets volatility: Evidence from a ST-HAR model",
+      "doi": "https://doi.org/10.1016/j.irfa.2021.101671",
+      "publication_year": 2021,
+      "cited_by_count": 140,
+      "authors": [
+        "Marwan Izzeldin",
+        "Yaz G\u0171lnur Murado\u011flu",
+        "Vasileios Pappas"
+      ]
+    }
+  ]
+}
