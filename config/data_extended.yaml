@@ -1,0 +1,81 @@
+# Extended data source definitions (includes commercial data)
+# Used when config/base.yaml data.mode = "extended"
+# Must be run on a server with access to commercial data sources.
+
+sources:
+
+  eurostat:
+    # Inherits all public Eurostat series from data_public.yaml
+    # (loaded and merged at runtime)
+
+  ecb:
+    # Inherits all public ECB series
+
+  ecfin:
+    # Inherits all public DG-ECFIN series
+
+  # === Commercial data sources (S&P Global / Markit PMI) ===
+  sp_global:
+    # Access requires subscription credentials stored in environment:
+    # SP_GLOBAL_API_KEY=<key>
+    # SP_GLOBAL_API_SECRET=<secret>
+    series:
+      - id: "PMI_MFG_EA"
+        code: "PXMLHE"
+        frequency: "monthly"
+        description: "Manufacturing PMI headline - Euro Area"
+        publication_lag_days: 1
+        revised: false
+
+      - id: "PMI_SERV_EA"
+        code: "PXMLHES"
+        frequency: "monthly"
+        description: "Services PMI headline - Euro Area"
+        publication_lag_days: 3
+        revised: false
+
+      - id: "PMI_MFG_DE"
+        code: "PXMLHDE"
+        frequency: "monthly"
+        description: "Manufacturing PMI headline - Germany"
+        publication_lag_days: 1
+        revised: false
+
+      - id: "PMI_MFG_FR"
+        code: "PXMLHFR"
+        frequency: "monthly"
+        construction_lag_days: 1
+        revised: false
+
+      - id: "PMI_MFG_IT"
+        code: "PXMLHIT"
+        frequency: "monthly"
+        description: "Manufacturing PMI headline - Italy"
+        publication_lag_days: 1
+        revised: false
+
+      - id: "PMI_SERV_DE"
+        code: "PXMLHDES"
+        frequency: "monthly"
+        description: "Services PMI headline - Germany"
+        publication_lag_days: 3
+        revised: false
+
+      - id: "PMI_SERV_FR"
+        code: "PXMLHFRS"
+        frequency: "monthly"
+        description: "Services PMI headline - France"
+        publication_lag_days: 3
+        revised: false
+
+      - id: "PMI_SERV_IT"
+        code: "PXMLHITS"
+        frequency: "monthly"
+        description: "Services PMI headline - Italy"
+        publication_lag_days: 3
+        revised: false
+
+  datastream:
+    # Thomson Reuters Datastream (legacy) - legacy series
+    # Access requires Datastream credentials
+    note: "Additional country/sector-specific series per Aprigliano et al. (2022)"

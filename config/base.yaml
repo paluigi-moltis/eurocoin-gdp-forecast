@@ -1,0 +1,35 @@
+# Global configuration for eurocoin-gdp-forecast
+
+project:
+  name: "eurocoin-gdp-forecast"
+  description: "Transformer-based medium-term GDP forecasting for the Euro Area"
+
+data:
+  mode: "public"  # "public" or "extended"
+  # When mode="extended", loads data_extended.yaml
+  # When mode="public", loads data_public.yaml
+
+sample:
+  start: "1999-01"      # Monthly covariates start
+  gdp_start: "2000Q1"   # GDP quarterly start
+  end: null              # null = latest available
+
+paths:
+  raw: "data/raw"
+  processed: "data/processed"
+  vintages: "data/vintages"
+  references: "references"
+  results: "results"
+
+target:
+  # MLRG band-pass filter parameters
+  frequency_threshold: 0.5236  # π/6 in radians (period ≈ 12 months)
+  filter_type: "christiano-fitzgerald"  # "cf" or "baxter-king"
+  cf_min_period: 2      # quarters (minimum cycle)
+  cf_max_period: "inf"  # quarters (maximum cycle — "inf" = no upper bound)
+
+backtest:
+  start: "2010-01"       # First backtest date
+  end: null              # null = latest available
+  frequency: "monthly"   # backtest cadence
+  estimation_date: "end_of_month"  # convention: last day of month

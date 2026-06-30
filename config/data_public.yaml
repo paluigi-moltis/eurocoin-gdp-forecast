@@ -1,0 +1,124 @@
+# Public data source definitions
+# All sources are freely accessible via public APIs
+# Eurostat SDMX key format: dimension1.dimension2...dimensionN
+
+sources:
+
+  eurostat:
+    base_url: "https://ec.europa.eu/eurostat/api/dissemination"
+    series:
+      # === National Accounts (GDP) ===
+      # namq_10_gdp: freq.unit.s_adj.na_item.geo
+      # Chain-linked volumes (2015 ref), SA, GDP, EA19
+      - id: "GDP_LEVELS"
+        code: "namq_10_gdp"
+        filter: "Q.CLV10_MEUR.SCA.B1GQ.EA19"
+        frequency: "quarterly"
+        description: "GDP at market prices, chain-linked volumes, SA (EA19)"
+        publication_lag_days: 30
+        revised: true
+
+      # === Industrial Production ===
+      # sts_inpr_m: freq.indic_bt.nace_r2.s_adj.unit.geo
+      # PRD = Production, B-D = Manufacturing, SCA, I21 = Index base 2021
+      - id: "IP_TOTAL"
+        code: "sts_inpr_m"
+        filter: "M.PRD.B-D.SCA.I21.EA19"
+        frequency: "monthly"
+        description: "Industrial production, manufacturing, SA, index 2021 (EA19)"
+        publication_lag_days: 45
+        revised: true
+
+      # === Prices ===
+      # prc_hicp_midx: freq.unit.coicop.geo
+      - id: "HICP_TOTAL"
+        code: "prc_hicp_midx"
+        filter: "M.I15.CP00.EA19"
+        frequency: "monthly"
+        description: "HICP All-items, index 2015=100 (EA19)"
+        publication_lag_days: 20
+        revised: false
+
+      - id: "HICP_ENERGY"
+        code: "prc_hicp_midx"
+        filter: "M.I15.NRG.EA19"
+        frequency: "monthly"
+        description: "HICP Energy, index 2015=100 (EA19)"
+        publication_lag_days: 20
+        revised: false
+
+      # sts_inpp_m: freq.indic_bt.nace_r2.s_adj.unit.geo
+      # PRC_PRR = Producer prices, B-D = Manufacturing, NSA, I21
+      - id: "PPI_DOM"
+        code: "sts_inpp_m"
+        filter: "M.PRC_PRR.B-D.NSA.I21.EA19"
+        frequency: "monthly"
+        description: "PPI manufacturing, NSA, index 2021 (EA19)"
+        publication_lag_days: 45
+        revised: true
+
+      # === Labor Market ===
+      # une_rt_m: freq.s_adj.age.unit.sex.geo
+      # SA, TOTAL age, PC_ACT rate, T=total sex, EA21
+      - id: "UNEMP"
+        code: "une_rt_m"
+        filter: "M.SA.TOTAL.PC_ACT.T.EA21"
+        frequency: "monthly"
+        description: "Unemployment rate, total, SA (EA21)"
+        publication_lag_days: 35
+        revised: true
+
+  ecb:
+    base_url: "https://data-api.ecb.europa.eu/service"
+    series:
+      - id: "M3"
+        code: "BSI.M.U2.N.V.M30.X.I.U2.2300.Z01.A"
+        frequency: "monthly"
+        description: "Monetary aggregate M3"
+        publication_lag_days: 30
+        revised: false
+
+      - id: "BOND_10Y"
+        code: "FM.D.U2.EUR.4F.BB.U2_10Y.YLD"
+        frequency: "daily"
+        description: "Euro area 10-year government bond yield"
+        publication_lag_days: 1
+        revised: false
+
+  ecfin:
+    base_url: "https://ec.europa.eu/economy_finance/db"
+    series:
+      - id: "ESI"
+        code: "BSI.G1.00.00.00.00.00"
+        frequency: "monthly"
+        description: "Economic Sentiment Indicator (composite)"
+        publication_lag_days: 5
+        revised: false
+
+      - id: "ICI"
+        code: "BSI.G1.02.00.00.00.00"
+        frequency: "monthly"
+        description: "Industrial Confidence Indicator"
+        publication_lag_days: 5
+        revised: false
+
+      - id: "CCI"
+        code: "BSI.G1.05.00.00.00.00"
+        frequency: "monthly"
+        description: "Consumer Confidence Indicator"
+        publication_lag_days: 5
+        revised: false
+
+      - id: "SCI"
+        code: "BSI.G1.04.00.00.00.00"
+        frequency: "monthly"
+        description: "Services Confidence Indicator"
+        publication_lag_days: 5
+        revised: false
+
+      - id: "ConstCI"
+        code: "BSI.G1.03.00.00.00.00"
+        frequency: "monthly"
+        description: "Construction Confidence Indicator"
+        publication_lag_days: 5
+        revised: false
