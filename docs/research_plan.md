@@ -3,6 +3,7 @@
 **Project:** Eurocoin Modernization Research
 **Version:** 1.3 — Added GitHub repo (MIT) and per-phase push policy
 **Date:** 2026-06-30
+**Repository:** https://github.com/paluigi-moltis/eurocoin-gdp-forecast
 **Target output:** English-language working paper + working prototype
 
 ---
@@ -448,7 +449,9 @@ The project is hosted on a **public GitHub repository** under the **MIT License*
 - [x] Papers downloaded
 - [x] Literature review (OpenAlex)
 - [x] Historical Eurocoin data downloaded
-- [ ] Create public GitHub repository (MIT license), push initial structure
+- [x] Public GitHub repository created (MIT license), pushed initial structure
+  - Repo: https://github.com/paluigi-moltis/eurocoin-gdp-forecast
+  - Tagged as `phase-0-setup`
 
 ### Phase 1: Data Pipeline and EDA
 
