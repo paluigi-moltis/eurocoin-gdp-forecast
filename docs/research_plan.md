@@ -453,20 +453,20 @@ The project is hosted on a **public GitHub repository** under the **MIT License*
   - Repo: https://github.com/paluigi-moltis/eurocoin-gdp-forecast
   - Tagged as `phase-0-setup`
 
-### Phase 1: Data Pipeline and EDA
+### Phase 1: Data Pipeline and EDA (✅ Completed)
 
-| Task | Description | Est. Effort |
-|------|-------------|-------------|
-| 1.1 | Set up Python environment (`uv init`, install dependencies) | 0.5 day |
-| 1.2 | Implement Eurostat SDMX API connector | 1 day |
-| 1.3 | Implement ECB SDW API connector | 0.5 day |
-| 1.4 | Implement DG-ECFIN survey data connector | 0.5 day |
-| 1.5 | Build panel assembly pipeline (alignment, transforms, ragged-edge handling) | 1.5 days |
-| 1.6 | Construct MLRG target from GDP data | 0.5 day |
-| 1.7 | EDA notebook: data availability heatmap, descriptive stats, missing patterns | 1 day |
-| 1.8 | Extended data connector stub (for commercial data) | 0.5 day |
-| 1.9 | Build vintage construction module: publication-lag schedules for each series | 1 day |
-| 1.10 | Retrieve Eurostat GDP revision history (real-time vintage database) | 1 day |
+| Task | Description | Status | Notes |
+|------|-------------|--------|-------|
+| 1.1 | Set up Python environment (`uv init`, install dependencies) | ✅ Done | polars, numpy, scipy, statsmodels, requests, pydantic, etc. |
+| 1.2 | Implement Eurostat SDMX API connector | ✅ Done | SDMX-CSV format with Accept header. 10 series: GDP, IP, HICP×2, PPI, UNEMP, surveys×4 |
+| 1.3 | Implement ECB SDW API connector | ⚠️ Blocked | ECB API not accessible from dev server. Financial data via FRED (OECD mirror) instead. ECB connector code retained for production use. |
+| 1.4 | Implement DG-ECFIN survey data connector | ✅ Done | Survey data accessed via Eurostat SDMX (ei_bsin_m_r2, ei_bsbu_m_r2, ei_bsci_m_r2, ei_bsrt_m_r2). ESI composite not directly available — component indicators used. |
+| 1.5 | Build panel assembly pipeline (alignment, transforms, ragged-edge) | ✅ Done | 12 series × 676 months. Panel saved to data/processed/panel_monthly.parquet |
+| 1.6 | Construct MLRG target from GDP data | ✅ Done | Band-pass filter (ideal, K=8). Validated: MLRG tracks Eurocoin published values during 2020-2022. |
+| 1.7 | EDA notebook | 📋 Deferred | To be created as Jupyter notebook. Core data exploration done via scripts. |
+| 1.8 | Extended data connector stub (for commercial data) | ✅ Done | ExtendedLoader stub with credential check. Config flag `use_extended_data` |
+| 1.9 | Build vintage construction module | ✅ Done | VintageManager with per-series publication lags. ALFRED loader for GDP revision history. |
+| 1.10 | Retrieve GDP revision history | ✅ Done | ALFRED series CLVMNACSCAB1GQEA19. Tested with 4 vintages: 0.7-1.6% GDP revisions for pandemic quarters. |
 
 ### Phase 2: Baseline Eurocoin Re-implementation
 

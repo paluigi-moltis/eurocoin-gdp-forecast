@@ -40,8 +40,25 @@ See [`docs/research_plan.md`](docs/research_plan.md) for the full methodology, e
 
 The project supports two data modes via a configuration flag:
 
-- **`public`** (default): Eurostat SDMX, ECB SDW, DG-ECFIN surveys — all freely accessible via public APIs.
+- **`public`** (default): Eurostat SDMX + FRED (OECD mirror) — all freely accessible.
 - **`extended`**: Adds commercial data (S&P Global / Markit PMI) matching the Aprigliano et al. (2022) dataset.
+
+### Current Data Panel (12 series)
+
+| Series | Source | Frequency | Description |
+|--------|--------|-----------|-------------|
+| GDP_LEVELS | Eurostat | Quarterly | GDP chain-linked volumes, SA (EA19) |
+| IP_TOTAL | Eurostat | Monthly | Industrial production, manufacturing, SA |
+| HICP_TOTAL | Eurostat | Monthly | HICP All-items index |
+| HICP_ENERGY | Eurostat | Monthly | HICP Energy index |
+| PPI_DOM | Eurostat | Monthly | PPI manufacturing, NSA |
+| UNEMP | Eurostat | Monthly | Unemployment rate, SA |
+| ICI | Eurostat | Monthly | Industrial Confidence Indicator |
+| CCI | Eurostat | Monthly | Consumer Confidence Indicator |
+| ConstCI | Eurostat | Monthly | Construction Confidence Indicator |
+| RetailCI | Eurostat | Monthly | Retail Confidence Indicator |
+| BOND_10Y | FRED | Monthly | 10-year government bond yield |
+| M3 | FRED | Monthly | M3 monetary aggregate |
 
 ### Data Vintages
 
@@ -49,7 +66,7 @@ Backtesting respects **real-time data availability** — each backtest date uses
 - Per-series publication lags
 - GDP and indicator revisions (values as known at the time, not today's revised estimates)
 
-Vintage panels are stored as individual CSV files in `data/vintages/` for full reproducibility.
+GDP vintage data is sourced from ALFRED (Federal Reserve Bank of St. Louis), series `CLVMNACSCAB1GQEA19`. Vintage panels are stored as CSV files in `data/vintages/` for full reproducibility.
 
 ## Key References
 
