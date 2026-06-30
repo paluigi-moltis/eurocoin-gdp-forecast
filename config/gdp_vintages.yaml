@@ -1,0 +1,22 @@
+# GDP vintage configuration
+# Uses ALFRED (Federal Reserve Bank of St. Louis) for real-time GDP vintages.
+#
+# Real GDP (chain-linked volumes, SA) for Euro Area 19:
+# FRED series: CLVMNACSCAB1GQEA19
+# Matches Eurostat namq_10_gdp / Q.CLV10_MEUR.SCA.B1GQ.EA19
+#
+# Vintages are fetched as: the GDP values as known at each historical date.
+# Example: 2020-Q2 GDP was first estimated at 2,281,325M (Jan 2021 vintage),
+#          revised to 2,302,682M by Jan 2024 vintage (+0.94% revision).
+#
+# For monthly indicator vintages, publication-lag approximation is used
+# (see VintageManager in evaluation/vintages.py).
+
+gdp_vintages:
+  alfred_series: "CLVMNACSCAB1GQEA19"
+  description: "Euro Area 19 Real GDP, chain-linked volumes, SA"
+  frequency: "quarterly"
+  # Vintages are fetched quarterly (aligned with GDP release dates)
+  vintage_frequency: "quarterly"
+  # The ALFRED series matches Eurostat code:
+  eurostat_equivalent: "namq_10_gdp/Q.CLV10_MEUR.SCA.B1GQ.EA19"
