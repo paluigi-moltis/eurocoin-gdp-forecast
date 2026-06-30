@@ -1,7 +1,7 @@
 # Research Plan: Transformer-Based Medium-Term GDP Forecasting for the Euro Area
 
 **Project:** Eurocoin Modernization Research
-**Version:** 1.2 — Revised (per-series publication lags & revision histories for all panel series)
+**Version:** 1.3 — Added GitHub repo (MIT) and per-phase push policy
 **Date:** 2026-06-30
 **Target output:** English-language working paper + working prototype
 
@@ -330,7 +330,8 @@ Where exact vintage data is not available for a specific series, the approximati
 ```
 eurocoin-gdp-forecast/
 ├── README.md
-├── pyproject.toml              # uv-managed dependencies
+├── LICENSE                   # MIT License
+├── pyproject.toml            # uv-managed dependencies
 ├── config/
 │   ├── base.yaml               # Global configuration
 │   ├── data_public.yaml        # Public data source definitions
@@ -421,6 +422,22 @@ data:
 
 The `panel.py` module reads this flag and dispatches to the appropriate loader. All downstream code (models, evaluation) is identical regardless of the flag value — the only difference is which series are in the panel.
 
+### 6.4 Version Control Policy
+
+The project is hosted on a **public GitHub repository** under the **MIT License**.
+
+- **Repository:** Created at the start of Phase 0 and kept synchronized throughout the project.
+- **Push cadence:** The repository is pushed to GitHub **after the completion of each work phase** (Phases 0–6). Intermediate commits accumulate locally (or on the local branch) during each phase; at phase completion the full set of changes is pushed as a tagged release.
+- **Tags:** Each phase completion is tagged (e.g., `phase-1-data`, `phase-2-gdfm`, `phase-3-beast`, …) to provide clear milestones in the commit history.
+- **Sensitive data:** Historical vintage CSVs and any commercial data are excluded via `.gitignore`. Only code, documentation, configs, and notebook outputs are published. The `data/raw/` and `data/vintages/` directories are gitignored; their structure is documented so a replicator can regenerate them from public sources.
+- **README:** The repository README provides setup instructions, data acquisition steps, and a description of each phase's deliverables.
+
+| Event | Action |
+|-------|--------|
+| Phase completion | Commit all changes, tag as `phase-N-<name>`, push to GitHub |
+| Mid-phase checkpoint | Commit locally (ensure work is saved across sessions) |
+| Plan revision | Update `docs/research_plan.md`, commit, push |
+
 ---
 
 ## 7. Work Phases and Timeline
@@ -431,6 +448,7 @@ The `panel.py` module reads this flag and dispatches to the appropriate loader. 
 - [x] Papers downloaded
 - [x] Literature review (OpenAlex)
 - [x] Historical Eurocoin data downloaded
+- [ ] Create public GitHub repository (MIT license), push initial structure
 
 ### Phase 1: Data Pipeline and EDA
 
@@ -537,6 +555,7 @@ The `panel.py` module reads this flag and dispatches to the appropriate loader. 
 
 ## 10. Deliverables Checklist
 
+- [ ] Public GitHub repository (MIT License), pushed after each phase completion
 - [ ] Data pipeline with public + extended data support (flag-controlled)
 - [ ] Data vintage system: publication-lag-aware vintage construction + Eurostat GDP revision history
 - [ ] Per-backtest-date vintage CSV files in `data/vintages/` for full reproducibility
@@ -632,4 +651,5 @@ See `docs/literature_review.md` for the full review covering:
 
 ---
 
-*Document version 1.0 — Prepared for review by Luigi Palumbo*
+*Document version 1.3 — Prepared for review by Luigi Palumbo*
+*Public repository: MIT License — pushed after each phase completion*
