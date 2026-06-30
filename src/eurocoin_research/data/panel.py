@@ -18,6 +18,7 @@ from eurocoin_research.data.loaders.ecb import ECBLoader
 from eurocoin_research.data.loaders.ecfin import ECFINLoader
 from eurocoin_research.data.loaders.eurostat import EurostatLoader
 from eurocoin_research.data.loaders.extended import ExtendedLoader
+from eurocoin_research.data.loaders.fred import FREDLoader
 
 logger = logging.getLogger(__name__)
 
@@ -60,6 +61,12 @@ class PanelAssembler:
                     base_url=source_cfg.base_url
                     or "https://ec.europa.eu/economy_finance/db",
                     cache_dir=self._raw_cache_dir / "ecfin",
+                )
+            elif source_name == "fred":
+                loaders[source_name] = FREDLoader(
+                    base_url=source_cfg.base_url
+                    or "https://fred.stlouisfed.org/graph/fredgraph.csv",
+                    cache_dir=self._raw_cache_dir / "fred",
                 )
             elif source_name in ("sp_global", "datastream"):
                 loaders[source_name] = ExtendedLoader(

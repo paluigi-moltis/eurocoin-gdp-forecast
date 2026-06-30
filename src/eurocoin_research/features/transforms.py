@@ -39,11 +39,10 @@ SERIES_TRANSFORMS = {
     "M3": TransformType.LOG_DIFF,
     "BOND_10Y": TransformType.NONE,     # Already a rate/yield
     # Surveys → no transform (indices, roughly stationary)
-    "ESI": TransformType.NONE,
     "ICI": TransformType.NONE,
     "CCI": TransformType.NONE,
-    "SCI": TransformType.NONE,
     "ConstCI": TransformType.NONE,
+    "RetailCI": TransformType.NONE,
 }
 
 

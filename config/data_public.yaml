@@ -1,6 +1,15 @@
 # Public data source definitions
 # All sources are freely accessible via public APIs
-# Eurostat SDMX key format: dimension1.dimension2...dimensionN
+#
+# Eurostat SDMX key format: dimension1.dimension2...dimensionN (dots in URL path)
+# FRED CSV API: https://fred.stlouisfed.org/graph/fredgraph.csv?id=SERIES_ID
+#
+# NOTE: Eurostat geo codes vary by dataset:
+# - Hard data (GDP, IP, prices): EA19 or EA20
+# - Survey data: EA20 only (EA19 not available for all survey datasets)
+#
+# NOTE: ECB SDW API (data-api.ecb.europa.eu) is not accessible from all servers.
+# Financial data (bond yields, M3) is sourced via FRED (OECD mirror) instead.
 
 sources:
 
@@ -9,7 +18,6 @@ sources:
     series:
       # === National Accounts (GDP) ===
       # namq_10_gdp: freq.unit.s_adj.na_item.geo
-      # Chain-linked volumes (2015 ref), SA, GDP, EA19
       - id: "GDP_LEVELS"
         code: "namq_10_gdp"
         filter: "Q.CLV10_MEUR.SCA.B1GQ.EA19"
@@ -20,7 +28,6 @@ sources:
 
       # === Industrial Production ===
       # sts_inpr_m: freq.indic_bt.nace_r2.s_adj.unit.geo
-      # PRD = Production, B-D = Manufacturing, SCA, I21 = Index base 2021
       - id: "IP_TOTAL"
         code: "sts_inpr_m"
         filter: "M.PRD.B-D.SCA.I21.EA19"
@@ -48,7 +55,6 @@ sources:
         revised: false
 
       # sts_inpp_m: freq.indic_bt.nace_r2.s_adj.unit.geo
-      # PRC_PRR = Producer prices, B-D = Manufacturing, NSA, I21
       - id: "PPI_DOM"
         code: "sts_inpp_m"
         filter: "M.PRC_PRR.B-D.NSA.I21.EA19"
@@ -59,7 +65,6 @@ sources:
 
       # === Labor Market ===
       # une_rt_m: freq.s_adj.age.unit.sex.geo
-      # SA, TOTAL age, PC_ACT rate, T=total sex, EA21
       - id: "UNEMP"
         code: "une_rt_m"
         filter: "M.SA.TOTAL.PC_ACT.T.EA21"
@@ -68,57 +73,59 @@ sources:
         publication_lag_days: 35
         revised: true
 
-  ecb:
-    base_url: "https://data-api.ecb.europa.eu/service"
-    series:
-      - id: "M3"
-        code: "BSI.M.U2.N.V.M30.X.I.U2.2300.Z01.A"
+      # === Business Surveys ===
+      # ei_bsin_m_r2: freq.indic.s_adj.unit.geo
+      - id: "ICI"
+        code: "ei_bsin_m_r2"
+        filter: "M.BS-ICI.SA.BAL.EA20"
         frequency: "monthly"
-        description: "Monetary aggregate M3"
-        publication_lag_days: 30
+        description: "Industrial Confidence Indicator, SA (EA20)"
+        publication_lag_days: 5
         revised: false
 
+      # ei_bsbu_m_r2: freq.indic.s_adj.geo
+      - id: "CCI"
+        code: "ei_bsbu_m_r2"
+        filter: "M.BS-CCI-BAL.SA.EA20"
+        frequency: "monthly"
+        description: "Consumer Confidence Indicator, SA (EA20)"
+        publication_lag_days: 5
+        revised: false
+
+      # ei_bsci_m_r2: freq.indic.s_adj.geo
+      - id: "ConstCI"
+        code: "ei_bsci_m_r2"
+        filter: "M.BS-BCI.SA.EA20"
+        frequency: "monthly"
+        description: "Construction Confidence Indicator, SA (EA20)"
+        publication_lag_days: 5
+        revised: false
+
+      # ei_bsrt_m_r2: freq.indic.s_adj.unit.geo
+      - id: "RetailCI"
+        code: "ei_bsrt_m_r2"
+        filter: "M.BS-RCI.SA.BAL.EA20"
+        frequency: "monthly"
+        description: "Retail Confidence Indicator, SA (EA20)"
+        publication_lag_days: 5
+        revised: false
+
+  fred:
+    base_url: "https://fred.stlouisfed.org/graph/fredgraph.csv"
+    series:
+      # OECD-sourced financial data mirrored on FRED
       - id: "BOND_10Y"
-        code: "FM.D.U2.EUR.4F.BB.U2_10Y.YLD"
-        frequency: "daily"
-        description: "Euro area 10-year government bond yield"
+        code: "IRLTLT01EZM156N"
+        filter: ""
+        frequency: "monthly"
+        description: "Euro area 10-year government bond yield (OECD via FRED)"
         publication_lag_days: 1
         revised: false
 
-  ecfin:
-    base_url: "https://ec.europa.eu/economy_finance/db"
-    series:
-      - id: "ESI"
-        code: "BSI.G1.00.00.00.00.00"
+      - id: "M3"
+        code: "MABMM301EZM189S"
+        filter: ""
         frequency: "monthly"
-        description: "Economic Sentiment Indicator (composite)"
-        publication_lag_days: 5
-        revised: false
-
-      - id: "ICI"
-        code: "BSI.G1.02.00.00.00.00"
-        frequency: "monthly"
-        description: "Industrial Confidence Indicator"
-        publication_lag_days: 5
-        revised: false
-
-      - id: "CCI"
-        code: "BSI.G1.05.00.00.00.00"
-        frequency: "monthly"
-        description: "Consumer Confidence Indicator"
-        publication_lag_days: 5
-        revised: false
-
-      - id: "SCI"
-        code: "BSI.G1.04.00.00.00.00"
-        frequency: "monthly"
-        description: "Services Confidence Indicator"
-        publication_lag_days: 5
-        revised: false
-
-      - id: "ConstCI"
-        code: "BSI.G1.03.00.00.00.00"
-        frequency: "monthly"
-        description: "Construction Confidence Indicator"
-        publication_lag_days: 5
+        description: "Euro area M3 monetary aggregate (OECD via FRED, until Nov 2023)"
+        publication_lag_days: 30
         revised: false
