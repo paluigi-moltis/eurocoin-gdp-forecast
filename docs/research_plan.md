@@ -1,7 +1,7 @@
 # Research Plan: Transformer-Based Medium-Term GDP Forecasting for the Euro Area
 
 **Project:** Eurocoin Modernization Research
-**Version:** 1.0 — Draft for Review
+**Version:** 1.1 — Revised (data vintages, ragged-edge removal, Eurocoin revision note)
 **Date:** 2026-06-30
 **Target output:** English-language working paper + working prototype
 
@@ -17,7 +17,9 @@ Develop and evaluate a modern forecasting framework based on Transformer neural 
 
 2. **Pandemic outlier distortion:** The extreme GDP swings of 2020Q1–Q3 create discontinuities in factor estimation, depending on data availability timing. Transformers can learn to treat these as a separate regime rather than letting them distort the entire estimation.
 
-3. **Missing-value sensitivity:** The current approach is sensitive to ragged edges at the recent end of the data (e.g., manufacturing PMI availability). A well-trained model should be more robust to missing values through learned imputation patterns.
+3. **Missing-value and ragged-edge sensitivity:** The current approach is sensitive to ragged edges at the recent end of the data (e.g., manufacturing PMI availability), as the most recent observations of some monthly series are not yet published when the indicator is estimated. A well-trained model should be more robust to such data availability patterns through learned imputation patterns.
+
+4. **Real-time data vintage issues:** GDP is published with a lag of approximately 30 days after quarter-end and is subject to revisions as seasonal adjustment factors and source data are updated. At each backtest date, the model must be evaluated using the data vintage that was actually available at that point in time — including GDP values that are not yet available (e.g., in April 2015, 2015Q1 GDP was not yet released) and past GDP values that may differ from today's revised estimates. This is a core aspect of the backtesting protocol (see §5.1).
 
 ### 1.2 Secondary Objectives
 
@@ -33,7 +35,7 @@ Develop and evaluate a modern forecasting framework based on Transformer neural 
 | RQ2 | Does attention learn regime-dependent covariate weights (e.g., down-weighting PPI during supply shocks)? | Attention weight analysis, variable selection networks (TFT), SHAP values |
 | RQ3 | Are pandemic-era GDP swings better handled by attention (as regime-specific) vs. factor models (as noise)? | Counterfactual exercises: models trained with/without pandemic period |
 | RQ4 | Does the levels-based approach with BEAST changepoints reveal structural shifts that growth-rate analysis misses? | Compare regime boundaries from BEAST vs. Bai-Perron; cross-regime correlation analysis |
-| RQ5 | How robust is each approach to ragged-edge missing values at the recent end? | Simulated real-time experiment with staggered data availability |
+| RQ5 | How robust is each approach to ragged edges and missing values at the recent end of the data panel? | Analysis of forecast stability across the data vintage snapshots used in backtesting |
 
 ---
 
@@ -68,6 +70,7 @@ Develop and evaluate a modern forecasting framework based on Transformer neural 
 | **Monetary & Financial** | ECB SDW | M3, EONIA/€STR, Eurostoxx, bond yields (10Y), credit volumes | Monthly |
 | **External** | Eurostat | Nominal/real effective exchange rate, exports/imports volume | Monthly |
 | **PMI (public proxy)** | Eurostat / press releases | Manufacturing PMI headline (publicly released in press releases) | Monthly |
+| **GDP vintages (revision history)** | Eurostat real-time database | Historical GDP data vintages — values as known at each past date | Quarterly (multiple vintages per quarter) |
 
 #### Extended Dataset (Phase 2 — via config flag `use_extended_data=True`)
 
@@ -215,21 +218,57 @@ For each detected regime, compute and compare:
 | **Correlation** with true MLRG | Signal quality |
 | **Turning-point detection** | Binary: did the model detect the direction change? |
 | **Directional accuracy** | % of months where sign of change is correct |
-| **Real-time tracking error** | MSD computed using only data available at each historical month |
 
-#### Backtesting Protocol
+#### Data Vintages — A Critical Concern
+
+Macroeconomic data is subject to both **publication lags** and **revisions**. A correct pseudo-real-time backtest must respect both:
+
+1. **Publication lags:** GDP for quarter Q is released approximately 30 days after quarter-end (flash estimate), with subsequent releases over the following months. Monthly indicators (IP, surveys, PMI) have shorter lags (2–6 weeks). This means that at any given backtest date, the most recent quarter(s) of GDP and the most recent month(s) of some monthly series are **not yet available** — creating the "ragged edge" at the end of the panel.
+
+2. **Data revisions:** Euro-area GDP is seasonally adjusted; when new observations are added, seasonal adjustment factors are re-estimated and **past values are revised**. A GDP growth figure for 2014Q4 available in April 2015 may differ from the same figure available in 2024. Monthly series (especially IP, retail sales, trade) are similarly revised.
+
+**Consequence:** At each backtest date, we must use the **data vintage** that was actually available at that point — not today's fully-revised data. Using revised data would leak future information and produce over-optimistic results.
+
+#### Backtesting Protocol with Data Vintages
 
 ```
-For each quarter-end t from 2010Q1 to latest:
-    1. Assemble data panel as of date t (respecting publication lags)
-    2. Estimate baseline GDFM Eurocoin → baseline forecast
-    3. Train Transformer models on data [2000, t] (expanding window)
-    4. Generate forecast for month t (nowcast) and t+3, t+6
-    5. Compare against true MLRG (known ex post)
-    6. Compare against published €coin value for month t
+For each backtest date t (monthly frequency, e.g., April 2015):
+
+    1. CONSTRUCT VINTAGE:
+       a. Determine which GDP quarters are available as of date t
+          (e.g., in April 2015: GDP through 2014Q4 is available;
+           2015Q1 flash is not yet released — comes ~April 30/May)
+       b. For all available GDP quarters, use the GDP VALUES as they
+          were known at date t (not today's revised estimates)
+       c. For monthly covariates, respect publication lags
+          (e.g., March 2015 IP published ~mid-May 2015)
+       d. Assemble the resulting panel → this is the "vintage_t" panel
+
+    2. SAVE VINTAGE:
+       Write the vintage panel to data/vintages/vintage_YYYY-MM.csv
+       (one CSV per backtest date, for full reproducibility and review)
+
+    3. ESTIMATE/FORECAST:
+       a. Estimate GDFM baseline on vintage_t panel → baseline forecast
+       b. Train Transformer models on vintage_t panel (expanding window)
+       c. Generate forecast for the current month (nowcast of MLRG)
+
+    4. EVALUATE (ex post):
+       a. Compare forecast against true MLRG (computed from final,
+          fully-revised GDP — known only ex post)
+       b. Compare against published €coin value for that month
+
+    5. REPEAT for next backtest date (roll forward monthly or quarterly)
 ```
 
-**Ragged-edge simulation:** For each t, create multiple "vintages" within the month (e.g., day 5, day 15, day 25) by progressively revealing data. Test how each model's forecast changes as more data arrives — directly measuring sensitivity to missing values.
+**Vintage storage:** A dedicated directory `data/vintages/` contains one CSV file per backtest date (e.g., `vintage_2015-04.csv`), storing the exact data panel used for that estimation. This allows:
+- Full reproducibility of every backtest result
+- Audit trail for reviewer/replicator
+- Comparison of how forecasts evolved as data was revised
+
+**Vintage construction method:** The primary approach is to use the **Eurostat GDP revision history** (real-time database) to reconstruct the GDP values as they were known at each past date. For monthly indicators, we approximate vintages using known publication lag schedules. Where exact vintage data is not available (especially for monthly series revisions), we document the approximation and assess its impact.
+
+**Note on Eurocoin published values:** The official Eurocoin indicator was revised multiple times from 2022 onward (reducing the variable set as the original panel produced too-volatile results). Therefore, substantial differences between published Eurocoin values and our GDFM reconstruction are **expected and acceptable**. The comparison against published values serves as a qualitative benchmark (turning points, broad co-movement), not as an exact replication target.
 
 ### 5.2 Model Comparison Table
 
@@ -262,6 +301,7 @@ eurocoin-gdp-forecast/
 ├── data/
 │   ├── raw/                    # Downloaded raw data
 │   ├── processed/              # Cleaned, aligned panel
+│   ├── vintages/               # One CSV per backtest date (e.g., vintage_2015-04.csv)
 │   └── Ecoin_realtime.xlsx     # Historical Eurocoin values
 ├── docs/
 │   ├── literature_review.md
@@ -293,8 +333,8 @@ eurocoin-gdp-forecast/
 │       ├── evaluation/
 │       │   ├── __init__.py
 │       │   ├── metrics.py      # RMSE, MSD, directional accuracy
-│       │   ├── backtest.py     # Expanding window backtest
-│       │   └── realtime.py     # Ragged-edge simulation
+│       │   ├── backtest.py     # Expanding window backtest with vintage management
+│       │   └── vintages.py     # Data vintage construction, publication-lag logic
 │       └── visualization/
 │           ├── __init__.py
 │           └── plots.py        # Forecast plots, attention heatmaps
@@ -366,6 +406,8 @@ The `panel.py` module reads this flag and dispatches to the appropriate loader. 
 | 1.6 | Construct MLRG target from GDP data | 0.5 day |
 | 1.7 | EDA notebook: data availability heatmap, descriptive stats, missing patterns | 1 day |
 | 1.8 | Extended data connector stub (for commercial data) | 0.5 day |
+| 1.9 | Build vintage construction module: publication-lag schedules for each series | 1 day |
+| 1.10 | Retrieve Eurostat GDP revision history (real-time vintage database) | 1 day |
 
 ### Phase 2: Baseline Eurocoin Re-implementation
 
@@ -375,8 +417,8 @@ The `panel.py` module reads this flag and dispatches to the appropriate loader. 
 | 2.2 | Implement common-idiosyncratic covariance decomposition (Forni et al.) | 2 days |
 | 2.3 | Implement generalized eigenvalue problem for smooth factors | 1 day |
 | 2.4 | Implement MLRG projection (frequency-domain cross-covariances) | 1 day |
-| 2.5 | Validate against published Eurocoin values | 1 day |
-| 2.6 | Implement ragged-edge handling (EM / vertical realignment) | 1 day |
+| 2.5 | Validate against published Eurocoin values (qualitative benchmark only — see §5.1 note) | 1 day |
+| 2.6 | Integrate GDFM estimation with data vintage system (estimate on each vintage panel) | 1 day |
 
 ### Phase 3: BEAST Changepoint Analysis (Avenue 2 Foundation)
 
@@ -409,12 +451,12 @@ The `panel.py` module reads this flag and dispatches to the appropriate loader. 
 
 | Task | Description | Est. Effort |
 |------|-------------|-------------|
-| 5.1 | Implement expanding-window backtest framework | 1 day |
-| 5.2 | Implement ragged-edge simulation (multiple vintages per month) | 1.5 days |
-| 5.3 | Run full backtest for all models | 1 day |
-| 5.4 | Compute all metrics (RMSE, MSD, directional accuracy, turning points) | 0.5 day |
-| 5.5 | Produce comparison tables and plots | 1 day |
-| 5.6 | Attention weight analysis (which variables does TFT attend to, per regime?) | 1.5 days |
+| 5.1 | Implement expanding-window backtest framework with data vintage loading | 1.5 days |
+| 5.2 | Run full backtest for all models across all vintages | 1.5 days |
+| 5.3 | Compute all metrics (RMSE, MSD, directional accuracy, turning points) | 0.5 day |
+| 5.4 | Produce comparison tables and plots | 1 day |
+| 5.5 | Attention weight analysis (which variables does TFT attend to, per regime?) | 1.5 days |
+| 5.6 | Vintage revision analysis: how much do forecasts change as GDP is revised? | 1 day |
 
 ### Phase 6: Working Paper Draft
 
@@ -427,7 +469,7 @@ The `panel.py` module reads this flag and dispatches to the appropriate loader. 
 | 6.5 | Write Discussion and Conclusion | 1 day |
 | 6.6 | Internal review and revision | 1 day |
 
-**Total estimated effort:** ~50 working days
+**Total estimated effort:** ~52 working days
 
 ---
 
@@ -438,33 +480,35 @@ The `panel.py` module reads this flag and dispatches to the appropriate loader. 
 | Small sample size (~300 monthly obs) limits deep learning | High | High | Strong regularization; data augmentation; patch-based tokenization; favor TFT (designed for small samples) |
 | CPU-only compute makes hyperparameter search expensive | Medium | Medium | Use Optuna with pruners; limit search space; pre-train on extended sample, fine-tune on 2000+ |
 | Public data may not include all Eurocoin series → weaker panel | Medium | Medium | Extended data flag prepared; Phase 2 can switch seamlessly |
-| Eurocoin GDFM re-implementation may not perfectly match published values | Medium | Low | Focus on correlation and turning-point match, not exact replication; document discrepancies |
+| Eurocoin GDFM re-implementation will differ from published values | High | Low | Official Eurocoin was revised multiple times from 2022 onward (reduced variable set); substantial differences are expected and acceptable. Use published values as qualitative benchmark only (turning points, broad co-movement) |
 | Transformers may not outperform linear baselines (Zeng et al. 2023) | Medium | High | Include DLinear as mandatory baseline; report honestly; value may be in interpretability rather than raw accuracy |
 | BEAST changepoints may not align with economic intuition | Low | Medium | Cross-validate with Bai-Perron; use economic event dates as priors |
-| Ragged-edge simulation is complex to implement realistically | Medium | Medium | Start with simplified vintage structure; refine iteratively |
+| GDP vintage reconstruction may be incomplete (missing historical revisions for some monthly series) | Medium | Medium | Use Eurostat real-time database for GDP vintages; approximate monthly series vintages via publication-lag schedules; document all approximations and assess sensitivity |
 
 ---
 
 ## 9. Success Criteria
 
-1. **Baseline validation:** Our GDFM re-implementation correlates > 0.90 with published Eurocoin values over 2010–2025.
+1. **Baseline validation:** Our GDFM re-implementation captures the broad co-movement and turning points of published Eurocoin values over 2010–2025. Exact numerical match is not expected given the multiple official revisions of the indicator.
 2. **Forecast accuracy:** At least one Transformer model achieves MSD ≤ Eurocoin GDFM MSD on the pandemic period (2020–2021), with improvement in turning-point detection.
 3. **Interpretability:** TFT variable selection weights show a clear regime-dependent pattern for PPI (high weight pre-2020, low weight during energy shock) — empirically demonstrating the attention mechanism addresses the core problem.
 4. **Regime analysis:** BEAST identifies ≥ 4 distinct regimes in GDP levels that correspond to known economic episodes; cross-regime PPI-GDP correlation shifts are statistically significant.
-5. **Robustness:** Transformer forecasts are less sensitive to ragged-edge missing values than the factor model (lower variance across vintages within a month).
+5. **Vintage robustness:** The full backtest is reproducible from saved vintage CSV files, and the vintage revision analysis quantifies how much forecasts change when GDP is revised between its initial release and final estimate.
 
 ---
 
 ## 10. Deliverables Checklist
 
 - [ ] Data pipeline with public + extended data support (flag-controlled)
-- [ ] GDFM Eurocoin re-implementation, validated against published values
+- [ ] Data vintage system: publication-lag-aware vintage construction + Eurostat GDP revision history
+- [ ] Per-backtest-date vintage CSV files in `data/vintages/` for full reproducibility
+- [ ] GDFM Eurocoin re-implementation, benchmarked qualitatively against published values
 - [ ] BEAST changepoint analysis with regime definitions
 - [ ] Descriptive regime analysis (correlations, PPI-GDP shift, lead-lag)
 - [ ] Trained Transformer models (TFT, Informer, PatchTST, DLinear, N-BEATS)
-- [ ] Full backtest results with all metrics
+- [ ] Full backtest results with all metrics, across data vintages
 - [ ] Attention weight / variable importance analysis
-- [ ] Ragged-edge robustness experiment
+- [ ] Vintage revision analysis: forecast sensitivity to GDP revisions
 - [ ] Working paper draft (English)
 - [ ] Reproducible codebase with documentation
 
