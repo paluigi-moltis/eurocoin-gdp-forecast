@@ -60,7 +60,7 @@ All series accessed via the `sdmx1` library (Eurostat ESTAT source + ECB source)
 | ConstCI | Eurostat | M | Construction Confidence Indicator (EA20) |
 | RetailCI | Eurostat | M | Retail Trade Confidence Indicator (EA20) |
 | M3 | ECB | M | Monetary aggregate M3, SA, EUR millions |
-| ESTR | ECB | M | Euro Short-Term Rate (€STR), monthly average |
+| EURIBOR1M | ECB | M | 1-Month Euribor, monthly average |
 | BOND_10Y | ECB | M | 10-year government bond yield |
 | EUROSTOXX50 | ECB | M | Euro Stoxx 50 index |
 | EURUSD | ECB | M | EUR/USD exchange rate |

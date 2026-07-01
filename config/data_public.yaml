@@ -122,12 +122,12 @@ sources:
 
       # === Interest Rates (Financial Markets dataflow: FM) ===
       # FM: freq.ref_area.currency.provider_fm.cb_nominal_measure.fm_item.fmat
-      # €STR (Euro Short-Term Rate) — replaces EONIA as the key short-term rate
-      - id: "ESTR"
+      # 1-Month Euribor (nominal, monthly average) — replaces EONIA/€STR for full-history coverage
+      - id: "EURIBOR1M"
         code: "FM"
-        filter: "M.U2.EUR.4F.MM.UONSTR.HSTA"
+        filter: "M.U2.EUR.RT.MM.EURIBOR1MD_.HSTA"
         frequency: "monthly"
-        description: "Euro Short-Term Rate (€STR), monthly average"
+        description: "1-Month Euribor, monthly average"
         publication_lag_days: 5
         revised: false
 

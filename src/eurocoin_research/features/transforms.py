@@ -38,6 +38,7 @@ SERIES_TRANSFORMS = {
     "UNEMP": TransformType.NONE,        # Already a rate
     "M3": TransformType.LOG_DIFF,
     "ESTR": TransformType.NONE,         # Already a rate
+    "EURIBOR1M": TransformType.NONE,    # Already a rate
     "BOND_10Y": TransformType.NONE,     # Already a rate/yield
     "EUROSTOXX50": TransformType.LOG_DIFF,
     "EURUSD": TransformType.LOG_DIFF,
