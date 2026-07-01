@@ -77,13 +77,14 @@ sources:
         revised: true
 
       # === Labor Market ===
-      # une_rt_m: freq.s_adj.age.unit.sex.geo
-      # NOTE: Eurostat SDMX only provides EA21 for this dataset (no EA changing composition)
+      # Sourced from ECB LFSI dataflow (U2 = EA changing composition)
+      # Eurostat's une_rt_m does NOT support EA geo code; ECB does.
+      # Key: freq.ref_area.s_adj.indic.age.sex
       - id: "UNEMP"
-        code: "une_rt_m"
-        filter: "M.SA.TOTAL.PC_ACT.T.EA21"
+        code: "LFSI"
+        filter: "M.U2.S.UNEHRT.TOTAL0.15_74.T"
         frequency: "monthly"
-        description: "Unemployment rate, total, SA (EA21 — EA not available in Eurostat)"
+        description: "Unemployment rate, total, SA (EA changing composition, 15-74, total sex)"
         publication_lag_days: 35
         revised: true
 

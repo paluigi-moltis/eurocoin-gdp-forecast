@@ -54,7 +54,7 @@ All series accessed via the `sdmx1` library (Eurostat ESTAT source + ECB source)
 | HICP_TOTAL | Eurostat | M | HICP All-items index |
 | HICP_ENERGY | Eurostat | M | HICP Energy index |
 | PPI_DOM | Eurostat | M | PPI manufacturing, NSA |
-| UNEMP | Eurostat | M | Unemployment rate, SA (EA21) |
+| UNEMP | ECB | M | Unemployment rate, SA (EA changing composition) |
 | ESI | DG-ECFIN | M | Economic Sentiment Indicator (composite, EA changing composition) |
 | ICI | DG-ECFIN | M | Manufacturing Confidence Indicator (EA changing composition) |
 | CCI | DG-ECFIN | M | Consumer Confidence Indicator (EA changing composition) |
