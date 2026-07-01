@@ -468,16 +468,16 @@ The project is hosted on a **public GitHub repository** under the **MIT License*
 | 1.9 | Build vintage construction module | ✅ Done | VintageManager with per-series publication lags. ALFRED loader for GDP revision history. |
 | 1.10 | Retrieve GDP revision history | ✅ Done | ALFRED series CLVMNACSCAB1GQEA19. Tested with 4 vintages: 0.7-1.6% GDP revisions for pandemic quarters. |
 
-### Phase 2: Baseline Eurocoin Re-implementation
+### Phase 2: Baseline Eurocoin Re-implementation (✅ Completed)
 
-| Task | Description | Est. Effort |
-|------|-------------|-------------|
-| 2.1 | Implement spectral density estimation (periodogram smoothing) | 1 day |
-| 2.2 | Implement common-idiosyncratic covariance decomposition (Forni et al.) | 2 days |
-| 2.3 | Implement generalized eigenvalue problem for smooth factors | 1 day |
-| 2.4 | Implement MLRG projection (frequency-domain cross-covariances) | 1 day |
-| 2.5 | Validate against published Eurocoin values (qualitative benchmark only — see §5.1 note) | 1 day |
-| 2.6 | Integrate GDFM estimation with data vintage system (estimate on each vintage panel) | 1 day |
+| Task | Description | Status | Notes |
+|------|-------------|--------|-------|
+| 2.1 | Spectral density estimation (periodogram smoothing) | ✅ Done | Bartlett kernel, max_lag=12 |
+| 2.2 | Common-idiosyncratic covariance decomposition | ✅ Done | PCA-based separation, positive-definite enforcement |
+| 2.3 | Generalized eigenvalue problem for smooth factors | ✅ Done | Cholesky-based GEP solver. Eigenvalues: [0.94, 0.71, 0.64] for q=3 |
+| 2.4 | MLRG projection (frequency-domain cross-covariances) | ✅ Done | Bivariate cross-spectrum integration over [-π/6, π/6]. Corr=0.16 (q=8) |
+| 2.5 | Validate against published Eurocoin values | ✅ Done | Qualitative match; GDFM signal varies during pandemic. Lower corr expected with 16 vs 100+ series |
+| 2.6 | Integrate GDFM with data vintage system | 📋 Deferred | Will be done during backtesting (Phase 5) |
 
 ### Phase 3: Changepoint Analysis (✅ Completed)
 
