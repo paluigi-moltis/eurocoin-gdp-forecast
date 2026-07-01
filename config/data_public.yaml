@@ -70,40 +70,57 @@ sources:
         publication_lag_days: 35
         revised: true
 
-      # === Business and Consumer Surveys (leading indicators) ===
-      # ei_bsin_m_r2: freq.indic.s_adj.unit.geo
-      - id: "ICI"
-        code: "ei_bsin_m_r2"
-        filter: "M.BS-ICI.SA.BAL.EA20"
+      # === Business and Consumer Surveys (DG-ECFIN via EI_BSSI_M_R2) ===
+      # This single dataset provides all DG-ECFIN confidence indicators
+      # in one request: ESI composite + 5 sectoral indicators.
+      # freq.indic.s_adj.geo — key uses EA20 geo code.
+      # Note: balances (net = positive% - negative%) except ESI (index ~100).
+      # Suffixes _BAL handled: both BS-SCI and BS-SCI-BAL map to same series.
+      - id: "ESI"
+        code: "EI_BSSI_M_R2"
+        filter: "M.BS-ESI-I.SA.EA20"
         frequency: "monthly"
-        description: "Industrial Confidence Indicator, SA (EA20)"
+        description: "Economic Sentiment Indicator (composite, SA, EA20)"
         publication_lag_days: 5
         revised: false
 
-      # ei_bsbu_m_r2: freq.indic.s_adj.geo
+      - id: "ServicesCI"
+        code: "EI_BSSI_M_R2"
+        filter: "M.BS-SCI-BAL.SA.EA20"
+        frequency: "monthly"
+        description: "Services Confidence Indicator (SA, EA20)"
+        publication_lag_days: 5
+        revised: false
+
+      - id: "ICI"
+        code: "EI_BSSI_M_R2"
+        filter: "M.BS-ICI-BAL.SA.EA20"
+        frequency: "monthly"
+        description: "Manufacturing Confidence Indicator (SA, EA20)"
+        publication_lag_days: 5
+        revised: false
+
       - id: "CCI"
-        code: "ei_bsbu_m_r2"
+        code: "EI_BSSI_M_R2"
+        filter: "M.BS-CSMCI-BAL.SA.EA20"
+        frequency: "monthly"
+        description: "Consumer Confidence Indicator (SA, EA20)"
+        publication_lag_days: 5
+        revised: false
+
+      - id: "RetailCI"
+        code: "EI_BSSI_M_R2"
+        filter: "M.BS-RCI-BAL.SA.EA20"
+        frequency: "monthly"
+        description: "Retail Trade Confidence Indicator (SA, EA20)"
+        publication_lag_days: 5
+        revised: false
+
+      - id: "ConstCI"
+        code: "EI_BSSI_M_R2"
         filter: "M.BS-CCI-BAL.SA.EA20"
         frequency: "monthly"
-        description: "Consumer Confidence Indicator, SA (EA20)"
-        publication_lag_days: 5
-        revised: false
-
-      # ei_bsci_m_r2: freq.indic.s_adj.geo
-      - id: "ConstCI"
-        code: "ei_bsci_m_r2"
-        filter: "M.BS-BCI.SA.EA20"
-        frequency: "monthly"
-        description: "Construction Confidence Indicator, SA (EA20)"
-        publication_lag_days: 5
-        revised: false
-
-      # ei_bsrt_m_r2: freq.indic.s_adj.unit.geo
-      - id: "RetailCI"
-        code: "ei_bsrt_m_r2"
-        filter: "M.BS-RCI.SA.BAL.EA20"
-        frequency: "monthly"
-        description: "Retail Trade Confidence Indicator, SA (EA20)"
+        description: "Construction Confidence Indicator (SA, EA20)"
         publication_lag_days: 5
         revised: false
 

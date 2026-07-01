@@ -43,10 +43,12 @@ SERIES_TRANSFORMS = {
     "EUROSTOXX50": TransformType.LOG_DIFF,
     "EURUSD": TransformType.LOG_DIFF,
     # Surveys → no transform (indices, roughly stationary)
-    "ICI": TransformType.NONE,
-    "CCI": TransformType.NONE,
-    "ConstCI": TransformType.NONE,
-    "RetailCI": TransformType.NONE,
+    "ESI": TransformType.NONE,           # Composite index ~100
+    "ServicesCI": TransformType.NONE,    # Net balance
+    "ICI": TransformType.NONE,           # Net balance (manufacturing)
+    "CCI": TransformType.NONE,           # Net balance (consumer)
+    "ConstCI": TransformType.NONE,       # Net balance (construction)
+    "RetailCI": TransformType.NONE,      # Net balance (retail)
 }
 
 

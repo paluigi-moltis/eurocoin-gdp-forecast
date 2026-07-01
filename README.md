@@ -43,7 +43,7 @@ The project supports two data modes via a configuration flag:
 - **`public`** (default): Eurostat SDMX + FRED (OECD mirror) — all freely accessible.
 - **`extended`**: Adds commercial data (S&P Global / Markit PMI) matching the Aprigliano et al. (2022) dataset.
 
-### Current Data Panel (15 series)
+### Current Data Panel (17 series)
 
 All series accessed via the `sdmx1` library (Eurostat ESTAT source + ECB source).
 
@@ -55,10 +55,12 @@ All series accessed via the `sdmx1` library (Eurostat ESTAT source + ECB source)
 | HICP_ENERGY | Eurostat | M | HICP Energy index |
 | PPI_DOM | Eurostat | M | PPI manufacturing, NSA |
 | UNEMP | Eurostat | M | Unemployment rate, SA (EA21) |
-| ICI | Eurostat | M | Industrial Confidence Indicator (EA20) |
+| ICI | Eurostat | M | Manufacturing Confidence Indicator (EA20) |
 | CCI | Eurostat | M | Consumer Confidence Indicator (EA20) |
+| ServicesCI | Eurostat | M | Services Confidence Indicator (EA20) |
 | ConstCI | Eurostat | M | Construction Confidence Indicator (EA20) |
 | RetailCI | Eurostat | M | Retail Trade Confidence Indicator (EA20) |
+| ESI | Eurostat | M | Economic Sentiment Indicator (composite, EA20) |
 | M3 | ECB | M | Monetary aggregate M3, SA, EUR millions |
 | EURIBOR1M | ECB | M | 1-Month Euribor, monthly average |
 | BOND_10Y | ECB | M | 10-year government bond yield |
