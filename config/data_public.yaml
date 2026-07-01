@@ -3,9 +3,23 @@
 #
 # Eurostat source: ESTAT (sdmx1 source ID)
 #   Key format: dimension1.dimension2...dimensionN (dots in URL path)
-#   Geo codes vary by dataset: EA19 (hard data), EA20/EA21 (surveys/labor)
+#
+# GEO CODES — Euro Area changing composition:
+#   EA = changing composition (preferred, keeps consistency as EA expanded)
+#   EA19 = fixed composition, original 19 members (used when EA unavailable)
+#   EA20 = EA19 + Croatia (joined Jan 2023)
+#   EA21 = latest composition
+#
+# Availability by dataset:
+#   namq_10_gdp (GDP):       EA ✅ (changing composition)
+#   sts_inpr_m (IP):         EA19 (EA not published by Eurostat)
+#   prc_hicp_midx (HICP):    EA ✅ (changing composition)
+#   sts_inpp_m (PPI):        EA19 (EA not published by Eurostat)
+#   une_rt_m (Unemployment): EA19 (only EA21 available with SA; EA19 for historical consistency)
+#   EI_BSSI_M_R2 (Surveys):  EA20 (EA not published by Eurostat)
 #
 # ECB source: ECB (sdmx1 source ID)
+#   U2 = Euro Area changing composition (all ECB series use this)
 #   Dataflows: BSI (monetary), FM (financial markets), EXR (exchange rates)
 
 sources:
@@ -17,19 +31,20 @@ sources:
       # namq_10_gdp: freq.unit.s_adj.na_item.geo
       - id: "GDP_LEVELS"
         code: "namq_10_gdp"
-        filter: "Q.CLV10_MEUR.SCA.B1GQ.EA19"
+        filter: "Q.CLV10_MEUR.SCA.B1GQ.EA"
         frequency: "quarterly"
-        description: "GDP at market prices, chain-linked volumes, SA (EA19)"
+        description: "GDP at market prices, chain-linked volumes, SA (EA changing composition)"
         publication_lag_days: 30
         revised: true
 
       # === Industrial Production ===
       # sts_inpr_m: freq.indic_bt.nace_r2.s_adj.unit.geo
+      # NOTE: Eurostat SDMX only provides EA19 for this dataset (no EA changing composition)
       - id: "IP_TOTAL"
         code: "sts_inpr_m"
         filter: "M.PRD.B-D.SCA.I21.EA19"
         frequency: "monthly"
-        description: "Industrial production, manufacturing, SA, index 2021 (EA19)"
+        description: "Industrial production, manufacturing, SA, index 2021 (EA19 — EA not available in Eurostat)"
         publication_lag_days: 45
         revised: true
 
@@ -37,109 +52,116 @@ sources:
       # prc_hicp_midx: freq.unit.coicop.geo
       - id: "HICP_TOTAL"
         code: "prc_hicp_midx"
-        filter: "M.I15.CP00.EA19"
+        filter: "M.I15.CP00.EA"
         frequency: "monthly"
-        description: "HICP All-items, index 2015=100 (EA19)"
+        description: "HICP All-items, index 2015=100 (EA changing composition)"
         publication_lag_days: 20
         revised: false
 
       - id: "HICP_ENERGY"
         code: "prc_hicp_midx"
-        filter: "M.I15.NRG.EA19"
+        filter: "M.I15.NRG.EA"
         frequency: "monthly"
-        description: "HICP Energy, index 2015=100 (EA19)"
+        description: "HICP Energy, index 2015=100 (EA changing composition)"
         publication_lag_days: 20
         revised: false
 
       # sts_inpp_m: freq.indic_bt.nace_r2.s_adj.unit.geo
+      # NOTE: Eurostat SDMX only provides EA19 for this dataset (no EA changing composition)
       - id: "PPI_DOM"
         code: "sts_inpp_m"
         filter: "M.PRC_PRR.B-D.NSA.I21.EA19"
         frequency: "monthly"
-        description: "PPI manufacturing, NSA, index 2021 (EA19)"
+        description: "PPI manufacturing, NSA, index 2021 (EA19 — EA not available in Eurostat)"
         publication_lag_days: 45
         revised: true
 
       # === Labor Market ===
       # une_rt_m: freq.s_adj.age.unit.sex.geo
+      # NOTE: Eurostat SDMX only provides EA21 for this dataset (no EA changing composition)
       - id: "UNEMP"
         code: "une_rt_m"
         filter: "M.SA.TOTAL.PC_ACT.T.EA21"
         frequency: "monthly"
-        description: "Unemployment rate, total, SA (EA21)"
+        description: "Unemployment rate, total, SA (EA21 — EA not available in Eurostat)"
         publication_lag_days: 35
         revised: true
 
-      # === Business and Consumer Surveys (DG-ECFIN via EI_BSSI_M_R2) ===
-      # This single dataset provides all DG-ECFIN confidence indicators
-      # in one request: ESI composite + 5 sectoral indicators.
-      # freq.indic.s_adj.geo — key uses EA20 geo code.
-      # Note: balances (net = positive% - negative%) except ESI (index ~100).
-      # Suffixes _BAL handled: both BS-SCI and BS-SCI-BAL map to same series.
+  # === Business and Consumer Surveys (DG-ECFIN direct download) ===
+  # DG-ECFIN publishes survey data with EA (changing composition) geo code
+  # via their own download portal, which is NOT available via Eurostat SDMX.
+  # The ECFINLoader downloads the main_indicators_sa_nace2.zip file.
+  ecfin:
+    base_url: ""
+    series:
+      # All series use EA (changing composition) from DG-ECFIN direct download
+      # ESI is a composite index centered at 100; others are net balances
       - id: "ESI"
-        code: "EI_BSSI_M_R2"
-        filter: "M.BS-ESI-I.SA.EA20"
+        code: "EA.ESI"
+        filter: ""
         frequency: "monthly"
-        description: "Economic Sentiment Indicator (composite, SA, EA20)"
+        description: "Economic Sentiment Indicator (composite, SA, EA changing composition)"
         publication_lag_days: 5
         revised: false
 
       - id: "ServicesCI"
-        code: "EI_BSSI_M_R2"
-        filter: "M.BS-SCI-BAL.SA.EA20"
+        code: "EA.SERV"
+        filter: ""
         frequency: "monthly"
-        description: "Services Confidence Indicator (SA, EA20)"
+        description: "Services Confidence Indicator (SA, EA changing composition)"
         publication_lag_days: 5
         revised: false
 
       - id: "ICI"
-        code: "EI_BSSI_M_R2"
-        filter: "M.BS-ICI-BAL.SA.EA20"
+        code: "EA.INDU"
+        filter: ""
         frequency: "monthly"
-        description: "Manufacturing Confidence Indicator (SA, EA20)"
+        description: "Manufacturing Confidence Indicator (SA, EA changing composition)"
         publication_lag_days: 5
         revised: false
 
       - id: "CCI"
-        code: "EI_BSSI_M_R2"
-        filter: "M.BS-CSMCI-BAL.SA.EA20"
+        code: "EA.CONS"
+        filter: ""
         frequency: "monthly"
-        description: "Consumer Confidence Indicator (SA, EA20)"
+        description: "Consumer Confidence Indicator (SA, EA changing composition)"
         publication_lag_days: 5
         revised: false
 
       - id: "RetailCI"
-        code: "EI_BSSI_M_R2"
-        filter: "M.BS-RCI-BAL.SA.EA20"
+        code: "EA.RETA"
+        filter: ""
         frequency: "monthly"
-        description: "Retail Trade Confidence Indicator (SA, EA20)"
+        description: "Retail Trade Confidence Indicator (SA, EA changing composition)"
         publication_lag_days: 5
         revised: false
 
       - id: "ConstCI"
-        code: "EI_BSSI_M_R2"
-        filter: "M.BS-CCI-BAL.SA.EA20"
+        code: "EA.BUIL"
+        filter: ""
         frequency: "monthly"
-        description: "Construction Confidence Indicator (SA, EA20)"
+        description: "Construction Confidence Indicator (SA, EA changing composition)"
         publication_lag_days: 5
         revised: false
 
   ecb:
     base_url: ""
     series:
+      # All ECB series use U2 = Euro Area changing composition
+
       # === Monetary Aggregates ===
       # BSI: freq.ref_area.adjustment.bs_rep_sector.bs_item.maturity_orig.data_type.count_area.bs_count_sector.currency_trans.bs_suffix
       - id: "M3"
         code: "BSI"
         filter: "M.U2.Y.V.M30.X.1.U2.2300.Z01.E"
         frequency: "monthly"
-        description: "Monetary aggregate M3, SA, EUR millions (EA)"
+        description: "Monetary aggregate M3, SA, EUR millions (EA changing composition)"
         publication_lag_days: 30
         revised: false
 
       # === Interest Rates (Financial Markets dataflow: FM) ===
       # FM: freq.ref_area.currency.provider_fm.cb_nominal_measure.fm_item.fmat
-      # 1-Month Euribor (nominal, monthly average) — replaces EONIA/€STR for full-history coverage
+      # 1-Month Euribor (nominal, monthly average)
       - id: "EURIBOR1M"
         code: "FM"
         filter: "M.U2.EUR.RT.MM.EURIBOR1MD_.HSTA"

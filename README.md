@@ -55,12 +55,12 @@ All series accessed via the `sdmx1` library (Eurostat ESTAT source + ECB source)
 | HICP_ENERGY | Eurostat | M | HICP Energy index |
 | PPI_DOM | Eurostat | M | PPI manufacturing, NSA |
 | UNEMP | Eurostat | M | Unemployment rate, SA (EA21) |
-| ICI | Eurostat | M | Manufacturing Confidence Indicator (EA20) |
-| CCI | Eurostat | M | Consumer Confidence Indicator (EA20) |
-| ServicesCI | Eurostat | M | Services Confidence Indicator (EA20) |
-| ConstCI | Eurostat | M | Construction Confidence Indicator (EA20) |
-| RetailCI | Eurostat | M | Retail Trade Confidence Indicator (EA20) |
-| ESI | Eurostat | M | Economic Sentiment Indicator (composite, EA20) |
+| ESI | DG-ECFIN | M | Economic Sentiment Indicator (composite, EA changing composition) |
+| ICI | DG-ECFIN | M | Manufacturing Confidence Indicator (EA changing composition) |
+| CCI | DG-ECFIN | M | Consumer Confidence Indicator (EA changing composition) |
+| ServicesCI | DG-ECFIN | M | Services Confidence Indicator (EA changing composition) |
+| ConstCI | DG-ECFIN | M | Construction Confidence Indicator (EA changing composition) |
+| RetailCI | DG-ECFIN | M | Retail Trade Confidence Indicator (EA changing composition) |
 | M3 | ECB | M | Monetary aggregate M3, SA, EUR millions |
 | EURIBOR1M | ECB | M | 1-Month Euribor, monthly average |
 | BOND_10Y | ECB | M | 10-year government bond yield |

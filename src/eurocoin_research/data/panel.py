@@ -15,6 +15,7 @@ import polars as pl
 from eurocoin_research.config import FullConfig, SeriesSpec, load_config
 from eurocoin_research.data.loaders.base import BaseLoader
 from eurocoin_research.data.loaders.sdmx import SDMXLoader
+from eurocoin_research.data.loaders.ecfin import ECFINLoader
 from eurocoin_research.data.loaders.extended import ExtendedLoader
 
 logger = logging.getLogger(__name__)
@@ -45,6 +46,11 @@ class PanelAssembler:
                 # Use unified SDMX loader for all SDMX-compatible sources
                 loaders[source_name] = SDMXLoader(
                     source_name=source_name,
+                    cache_dir=self._raw_cache_dir / source_name,
+                )
+            elif source_name == "ecfin":
+                # DG-ECFIN surveys use a direct download (EA changing composition)
+                loaders[source_name] = ECFINLoader(
                     cache_dir=self._raw_cache_dir / source_name,
                 )
             elif source_name in ("sp_global", "datastream"):
