@@ -15,6 +15,7 @@ import polars as pl
 from eurocoin_research.config import FullConfig, SeriesSpec, load_config
 from eurocoin_research.data.loaders.base import BaseLoader
 from eurocoin_research.data.loaders.sdmx import SDMXLoader
+from eurocoin_research.data.loaders.rtd import RTDLoader
 from eurocoin_research.data.loaders.ecfin import ECFINLoader
 from eurocoin_research.data.loaders.extended import ExtendedLoader
 
@@ -42,12 +43,25 @@ class PanelAssembler:
         loaders: dict[str, BaseLoader] = {}
 
         for source_name, source_cfg in self.config.sources.items():
-            if source_name in ("eurostat", "ecb", "oecd", "imf", "estat"):
-                # Use unified SDMX loader for all SDMX-compatible sources
+            if source_name in ("eurostat", "oecd", "imf", "estat"):
+                # Use unified SDMX loader for standard SDMX sources
                 loaders[source_name] = SDMXLoader(
                     source_name=source_name,
                     cache_dir=self._raw_cache_dir / source_name,
                 )
+            elif source_name == "ecb":
+                # ECB: check if any series use the RTD dataflow
+                rtd_series = [s for s in source_cfg.series if s.code == "RTD"]
+                other_series = [s for s in source_cfg.series if s.code != "RTD"]
+                if rtd_series:
+                    loaders["ecb_rtd"] = RTDLoader(
+                        cache_dir=self._raw_cache_dir / "ecb_rtd",
+                    )
+                if other_series:
+                    loaders[source_name] = SDMXLoader(
+                        source_name=source_name,
+                        cache_dir=self._raw_cache_dir / source_name,
+                    )
             elif source_name == "ecfin":
                 # DG-ECFIN surveys use a direct download (EA changing composition)
                 loaders[source_name] = ECFINLoader(
@@ -77,14 +91,22 @@ class PanelAssembler:
         loaders = self._create_loaders()
         all_series = self.config.get_all_series()
 
-        # Group series by source
-        series_by_source: dict[str, list[SeriesSpec]] = {}
+        # Group series by source, splitting ECB RTD series separately
+        series_by_loader: dict[str, list[SeriesSpec]] = {}
         for source_name, source_cfg in self.config.sources.items():
-            if source_cfg.series:
-                series_by_source[source_name] = source_cfg.series
+            if source_name == "ecb":
+                # Split RTD vs standard ECB series
+                rtd_series = [s for s in source_cfg.series if s.code == "RTD"]
+                other_series = [s for s in source_cfg.series if s.code != "RTD"]
+                if rtd_series:
+                    series_by_loader["ecb_rtd"] = rtd_series
+                if other_series:
+                    series_by_loader["ecb"] = other_series
+            elif source_cfg.series:
+                series_by_loader[source_name] = source_cfg.series
 
         frames: list[pl.DataFrame] = []
-        for source_name, specs in series_by_source.items():
+        for source_name, specs in series_by_loader.items():
             loader = loaders.get(source_name)
             if loader is None:
                 logger.warning("No loader for source '%s', skipping %d series", source_name, len(specs))

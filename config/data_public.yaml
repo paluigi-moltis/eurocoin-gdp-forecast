@@ -1,26 +1,14 @@
 # Public data source definitions
-# All sources accessed via the sdmx1 library (sdmx.Client)
-#
-# Eurostat source: ESTAT (sdmx1 source ID)
-#   Key format: dimension1.dimension2...dimensionN (dots in URL path)
+# All sources accessed via the sdmx1 library (sdmx.Client) or DG-ECFIN direct download
 #
 # GEO CODES — Euro Area changing composition:
-#   EA = changing composition (preferred, keeps consistency as EA expanded)
-#   EA19 = fixed composition, original 19 members (used when EA unavailable)
-#   EA20 = EA19 + Croatia (joined Jan 2023)
-#   EA21 = latest composition
+#   Eurostat: EA (GDP, HICP)
+#   ECB:      S0 = EA moving concept / U2 = EA changing composition (all ECB series)
+#   DG-ECFIN: EA (direct download file)
 #
-# Availability by dataset:
-#   namq_10_gdp (GDP):       EA ✅ (changing composition)
-#   sts_inpr_m (IP):         EA19 (EA not published by Eurostat)
-#   prc_hicp_midx (HICP):    EA ✅ (changing composition)
-#   sts_inpp_m (PPI):        EA19 (EA not published by Eurostat)
-#   une_rt_m (Unemployment): EA19 (only EA21 available with SA; EA19 for historical consistency)
-#   EI_BSSI_M_R2 (Surveys):  EA20 (EA not published by Eurostat)
-#
-# ECB source: ECB (sdmx1 source ID)
-#   U2 = Euro Area changing composition (all ECB series use this)
-#   Dataflows: BSI (monetary), FM (financial markets), EXR (exchange rates)
+# ECB RTD (Real-Time Database):
+#   Provides vintage history via include_history=True for pseudo-real-time backtesting.
+#   IP_TOTAL uses RTD with S0 (changing composition) + vintage support.
 
 sources:
 
@@ -28,7 +16,6 @@ sources:
     base_url: "https://ec.europa.eu/eurostat/api/dissemination"
     series:
       # === National Accounts (GDP) ===
-      # namq_10_gdp: freq.unit.s_adj.na_item.geo
       - id: "GDP_LEVELS"
         code: "namq_10_gdp"
         filter: "Q.CLV10_MEUR.SCA.B1GQ.EA"
@@ -37,19 +24,7 @@ sources:
         publication_lag_days: 30
         revised: true
 
-      # === Industrial Production ===
-      # sts_inpr_m: freq.indic_bt.nace_r2.s_adj.unit.geo
-      # NOTE: Eurostat SDMX only provides EA19 for this dataset (no EA changing composition)
-      - id: "IP_TOTAL"
-        code: "sts_inpr_m"
-        filter: "M.PRD.B-D.SCA.I21.EA19"
-        frequency: "monthly"
-        description: "Industrial production, manufacturing, SA, index 2021 (EA19 — EA not available in Eurostat)"
-        publication_lag_days: 45
-        revised: true
-
       # === Prices ===
-      # prc_hicp_midx: freq.unit.coicop.geo
       - id: "HICP_TOTAL"
         code: "prc_hicp_midx"
         filter: "M.I15.CP00.EA"
@@ -66,37 +41,88 @@ sources:
         publication_lag_days: 20
         revised: false
 
-      # sts_inpp_m: freq.indic_bt.nace_r2.s_adj.unit.geo
-      # NOTE: Eurostat SDMX only provides EA19 for this dataset (no EA changing composition)
+      # PPI: Eurostat does NOT support EA for this dataset. Using ECB RTD instead.
       - id: "PPI_DOM"
         code: "sts_inpp_m"
         filter: "M.PRC_PRR.B-D.NSA.I21.EA19"
         frequency: "monthly"
-        description: "PPI manufacturing, NSA, index 2021 (EA19 — EA not available in Eurostat)"
+        description: "PPI manufacturing, NSA, index 2021 (EA19 — EA not available in Eurostat; pending ECB RTD migration)"
         publication_lag_days: 45
         revised: true
 
-      # === Labor Market ===
-      # Sourced from ECB LFSI dataflow (U2 = EA changing composition)
-      # Eurostat's une_rt_m does NOT support EA geo code; ECB does.
-      # Key: freq.ref_area.s_adj.indic.age.sex
+  ecb:
+    base_url: ""
+    series:
+      # === Industrial Production (ECB RTD with vintages) ===
+      # RTD key: freq.ref_area.adjustment.rt_econ_concept.rt_denom
+      # S0 = EA moving concept (changing composition), W = working-day adjusted
+      - id: "IP_TOTAL"
+        code: "RTD"
+        filter: "M.S0.W.I_XCOEN.X"
+        frequency: "monthly"
+        description: "Industrial production index (total excl. construction & energy), WDA (EA changing composition, ECB RTD with vintages)"
+        publication_lag_days: 45
+        revised: true
+
+      # === Labour Market ===
+      # ECB LFSI: freq.ref_area.s_adj.indic.age.sex
+      # U2 = EA changing composition
       - id: "UNEMP"
         code: "LFSI"
         filter: "M.U2.S.UNEHRT.TOTAL0.15_74.T"
         frequency: "monthly"
-        description: "Unemployment rate, total, SA (EA changing composition, 15-74, total sex)"
+        description: "Unemployment rate, total, SA (EA changing composition, 15-74)"
         publication_lag_days: 35
         revised: true
 
+      # === Monetary Aggregates ===
+      - id: "M3"
+        code: "BSI"
+        filter: "M.U2.Y.V.M30.X.1.U2.2300.Z01.E"
+        frequency: "monthly"
+        description: "Monetary aggregate M3, SA, EUR millions (EA changing composition)"
+        publication_lag_days: 30
+        revised: false
+
+      # === Interest Rates ===
+      - id: "EURIBOR1M"
+        code: "FM"
+        filter: "M.U2.EUR.RT.MM.EURIBOR1MD_.HSTA"
+        frequency: "monthly"
+        description: "1-Month Euribor, monthly average"
+        publication_lag_days: 5
+        revised: false
+
+      - id: "BOND_10Y"
+        code: "FM"
+        filter: "M.U2.EUR.4F.BB.U2_10Y.YLD"
+        frequency: "monthly"
+        description: "Euro area 10-year government bond yield, monthly average"
+        publication_lag_days: 1
+        revised: false
+
+      # === Equity Markets ===
+      - id: "EUROSTOXX50"
+        code: "FM"
+        filter: "M.U2.EUR.DS.EI.DJEURST.HSTA"
+        frequency: "monthly"
+        description: "Euro Stoxx 50 index, monthly average"
+        publication_lag_days: 1
+        revised: false
+
+      # === Exchange Rates ===
+      - id: "EURUSD"
+        code: "EXR"
+        filter: "M.USD.EUR.SP00.A"
+        frequency: "monthly"
+        description: "EUR/USD exchange rate, monthly average"
+        publication_lag_days: 5
+        revised: false
+
   # === Business and Consumer Surveys (DG-ECFIN direct download) ===
-  # DG-ECFIN publishes survey data with EA (changing composition) geo code
-  # via their own download portal, which is NOT available via Eurostat SDMX.
-  # The ECFINLoader downloads the main_indicators_sa_nace2.zip file.
   ecfin:
     base_url: ""
     series:
-      # All series use EA (changing composition) from DG-ECFIN direct download
-      # ESI is a composite index centered at 100; others are net balances
       - id: "ESI"
         code: "EA.ESI"
         filter: ""
@@ -142,60 +168,5 @@ sources:
         filter: ""
         frequency: "monthly"
         description: "Construction Confidence Indicator (SA, EA changing composition)"
-        publication_lag_days: 5
-        revised: false
-
-  ecb:
-    base_url: ""
-    series:
-      # All ECB series use U2 = Euro Area changing composition
-
-      # === Monetary Aggregates ===
-      # BSI: freq.ref_area.adjustment.bs_rep_sector.bs_item.maturity_orig.data_type.count_area.bs_count_sector.currency_trans.bs_suffix
-      - id: "M3"
-        code: "BSI"
-        filter: "M.U2.Y.V.M30.X.1.U2.2300.Z01.E"
-        frequency: "monthly"
-        description: "Monetary aggregate M3, SA, EUR millions (EA changing composition)"
-        publication_lag_days: 30
-        revised: false
-
-      # === Interest Rates (Financial Markets dataflow: FM) ===
-      # FM: freq.ref_area.currency.provider_fm.cb_nominal_measure.fm_item.fmat
-      # 1-Month Euribor (nominal, monthly average)
-      - id: "EURIBOR1M"
-        code: "FM"
-        filter: "M.U2.EUR.RT.MM.EURIBOR1MD_.HSTA"
-        frequency: "monthly"
-        description: "1-Month Euribor, monthly average"
-        publication_lag_days: 5
-        revised: false
-
-      # 10-year government bond yield
-      - id: "BOND_10Y"
-        code: "FM"
-        filter: "M.U2.EUR.4F.BB.U2_10Y.YLD"
-        frequency: "monthly"
-        description: "Euro area 10-year government bond yield, monthly average"
-        publication_lag_days: 1
-        revised: false
-
-      # === Equity Markets ===
-      # Euro Stoxx 50 index
-      - id: "EUROSTOXX50"
-        code: "FM"
-        filter: "M.U2.EUR.DS.EI.DJEURST.HSTA"
-        frequency: "monthly"
-        description: "Euro Stoxx 50 index, monthly average"
-        publication_lag_days: 1
-        revised: false
-
-      # === Exchange Rates ===
-      # EXR: freq.currency.currency_ref.currency_provider.collection
-      - id: "EURUSD"
-        code: "EXR"
-        filter: "M.USD.EUR.SP00.A"
-        frequency: "monthly"
-        description: "EUR/USD exchange rate, monthly average"
         publication_lag_days: 5
         revised: false

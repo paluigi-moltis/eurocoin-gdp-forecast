@@ -49,11 +49,11 @@ All series accessed via the `sdmx1` library (Eurostat ESTAT source + ECB source)
 
 | Series | Source | Freq | Description |
 |--------|--------|------|-------------|
-| GDP_LEVELS | Eurostat | Q | GDP chain-linked volumes, SA (EA19) |
-| IP_TOTAL | Eurostat | M | Industrial production, manufacturing, SA |
-| HICP_TOTAL | Eurostat | M | HICP All-items index |
-| HICP_ENERGY | Eurostat | M | HICP Energy index |
-| PPI_DOM | Eurostat | M | PPI manufacturing, NSA |
+| GDP_LEVELS | Eurostat | Q | GDP chain-linked volumes, SA (EA changing composition) |
+| IP_TOTAL | ECB RTD | M | Industrial production index (total excl. construction & energy), WDA (EA changing composition, with vintages) |
+| HICP_TOTAL | Eurostat | M | HICP All-items index (EA changing composition) |
+| HICP_ENERGY | Eurostat | M | HICP Energy index (EA changing composition) |
+| PPI_DOM | Eurostat | M | PPI manufacturing, NSA (EA19 — pending EA alternative) |
 | UNEMP | ECB | M | Unemployment rate, SA (EA changing composition) |
 | ESI | DG-ECFIN | M | Economic Sentiment Indicator (composite, EA changing composition) |
 | ICI | DG-ECFIN | M | Manufacturing Confidence Indicator (EA changing composition) |
