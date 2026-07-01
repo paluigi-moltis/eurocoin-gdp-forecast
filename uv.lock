@@ -313,7 +313,6 @@ dependencies = [
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "openpyxl" },
-    { name = "pandasdmx" },
     { name = "plotly" },
     { name = "polars" },
     { name = "pydantic" },
@@ -323,6 +322,7 @@ dependencies = [
     { name = "river" },
     { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "scipy", version = "1.18.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "sdmx1" },
     { name = "seaborn" },
     { name = "statsmodels" },
 ]
@@ -339,7 +339,6 @@ requires-dist = [
     { name = "matplotlib", specifier = ">=3.11.0" },
     { name = "numpy", specifier = ">=2.4.6" },
     { name = "openpyxl", specifier = ">=3.1.5" },
-    { name = "pandasdmx", specifier = ">=1.9.0" },
     { name = "plotly", specifier = ">=6.8.0" },
     { name = "polars", specifier = ">=1.42.1" },
     { name = "pydantic", specifier = ">=2.13.4" },
@@ -348,6 +347,7 @@ requires-dist = [
     { name = "requests", specifier = ">=2.34.2" },
     { name = "river", specifier = ">=0.25.0" },
     { name = "scipy", specifier = ">=1.17.1" },
+    { name = "sdmx1", specifier = ">=2.26.0" },
     { name = "seaborn", specifier = ">=0.13.2" },
     { name = "statsmodels", specifier = ">=0.14.6" },
 ]
@@ -1053,21 +1053,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/31/89/8fc1c268969fac43688d65fd92e67df24bd128d53cb4d2eee534cd307399/pandas-3.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:9c39be2d709d01fa972a0cabc522389fceca4f3969332ba25a7d6c5802cf976a", size = 11828897, upload-time = "2026-05-11T18:54:17.146Z" },
     { url = "https://files.pythonhosted.org/packages/56/3b/e7d20dea247a3e6dc0bd8a6953854afbedc03951def4e7371e05e7263e25/pandas-3.0.3-cp314-cp314t-win_amd64.whl", hash = "sha256:4db8c527972a821cf5286b40ccc57642a39bc62e62022b42f99f8a67fca8c3a1", size = 10900855, upload-time = "2026-05-11T18:54:19.72Z" },
     { url = "https://files.pythonhosted.org/packages/0f/54/68a0978d1ef8502b8492099beaa6e7a0c1b32e3b5d4f677f5810cb08711c/pandas-3.0.3-cp314-cp314t-win_arm64.whl", hash = "sha256:b2c95f8bfc1ee412bf482605d7bfd30c12d1d26bd59fdd91efeef1d4718decb1", size = 9466464, upload-time = "2026-05-11T18:54:22.754Z" },
-]
-
-[[package]]
-name = "pandasdmx"
-version = "1.9.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "lxml" },
-    { name = "pandas" },
-    { name = "pydantic" },
-    { name = "requests" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/a3/4e/0ca9480616516db269e48418514ef5fb5bec81663db847126b5a062e6d0d/pandaSDMX-1.9.0.tar.gz", hash = "sha256:003949fd166bf714e914cfdead899d7792e4c189f06f2437fd51bc496ab73948", size = 77335, upload-time = "2022-02-23T10:51:06.519Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/38/8e/d804f99309a918182469baa3e7a73adfc9de87432a5f905e4ef8473069fa/pandaSDMX-1.9.0-py3-none-any.whl", hash = "sha256:2ede12e27b86dec044c55b1433a5c993dd6fb7e760133343b8ebfaef4158a37b", size = 87898, upload-time = "2022-02-23T10:51:04.214Z" },
 ]
 
 [[package]]
@@ -1848,6 +1833,23 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/f7/86/5185061a1fcc41d18c5dc2463969b3a3964b31d9ac67b2fb05d4c7ff7670/scipy-1.18.0-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:9aac6192fac56bf2ca534389d24623f07b39ff83317d58287285e7fbd622ff76", size = 37472480, upload-time = "2026-06-19T15:01:35.136Z" },
     { url = "https://files.pythonhosted.org/packages/31/8e/f04c68e39919a010d34f2ee1367fd705b0a25a02f609d755f0bfbc0a15fc/scipy-1.18.0-cp314-cp314t-win_amd64.whl", hash = "sha256:e40baea28ae7f5475c779741e2d90b1247c78531207b49c7030e698ff81cee3f", size = 37365390, upload-time = "2026-06-19T15:01:38.091Z" },
     { url = "https://files.pythonhosted.org/packages/d5/19/969dc072906c84dd0a3b05dcf57ea750936087d7873549e408b35cfc3f97/scipy-1.18.0-cp314-cp314t-win_arm64.whl", hash = "sha256:368e0a705903c466aa5f08eefb39e6b1b6b2d659e7352a31fd9e2438365be0f8", size = 25279661, upload-time = "2026-06-19T15:01:40.817Z" },
+]
+
+[[package]]
+name = "sdmx1"
+version = "2.26.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "lxml" },
+    { name = "packaging" },
+    { name = "pandas" },
+    { name = "platformdirs" },
+    { name = "python-dateutil" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/0a/99/0230612ea3f3bb4618afe26a1e517ccb305a6594d6c05ca1399fc464c460/sdmx1-2.26.0.tar.gz", hash = "sha256:253e8cae85e3c752a6faaa3f7cfbad93f43a09dcb52f2e41f22aa1c71bc7b6e2", size = 277918, upload-time = "2026-04-04T21:28:56.859Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/07/19/27ac0f1a70811f4e10e283eaf850a0e84d5e3ecf74fa193c0056199b4092/sdmx1-2.26.0-py3-none-any.whl", hash = "sha256:de7147381f40aad93bee45d7adc6567558f83f1f4a6c63ac5fbc22a0d0ed7f95", size = 267527, upload-time = "2026-04-04T21:28:55.126Z" },
 ]
 
 [[package]]

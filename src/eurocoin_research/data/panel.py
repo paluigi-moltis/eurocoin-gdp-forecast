@@ -14,11 +14,8 @@ import polars as pl
 
 from eurocoin_research.config import FullConfig, SeriesSpec, load_config
 from eurocoin_research.data.loaders.base import BaseLoader
-from eurocoin_research.data.loaders.ecb import ECBLoader
-from eurocoin_research.data.loaders.ecfin import ECFINLoader
-from eurocoin_research.data.loaders.eurostat import EurostatLoader
+from eurocoin_research.data.loaders.sdmx import SDMXLoader
 from eurocoin_research.data.loaders.extended import ExtendedLoader
-from eurocoin_research.data.loaders.fred import FREDLoader
 
 logger = logging.getLogger(__name__)
 
@@ -44,29 +41,11 @@ class PanelAssembler:
         loaders: dict[str, BaseLoader] = {}
 
         for source_name, source_cfg in self.config.sources.items():
-            if source_name == "eurostat":
-                loaders[source_name] = EurostatLoader(
-                    base_url=source_cfg.base_url
-                    or "https://ec.europa.eu/eurostat/api/dissemination",
-                    cache_dir=self._raw_cache_dir / "eurostat",
-                )
-            elif source_name == "ecb":
-                loaders[source_name] = ECBLoader(
-                    base_url=source_cfg.base_url
-                    or "https://data-api.ecb.europa.eu/service",
-                    cache_dir=self._raw_cache_dir / "ecb",
-                )
-            elif source_name == "ecfin":
-                loaders[source_name] = ECFINLoader(
-                    base_url=source_cfg.base_url
-                    or "https://ec.europa.eu/economy_finance/db",
-                    cache_dir=self._raw_cache_dir / "ecfin",
-                )
-            elif source_name == "fred":
-                loaders[source_name] = FREDLoader(
-                    base_url=source_cfg.base_url
-                    or "https://fred.stlouisfed.org/graph/fredgraph.csv",
-                    cache_dir=self._raw_cache_dir / "fred",
+            if source_name in ("eurostat", "ecb", "oecd", "imf", "estat"):
+                # Use unified SDMX loader for all SDMX-compatible sources
+                loaders[source_name] = SDMXLoader(
+                    source_name=source_name,
+                    cache_dir=self._raw_cache_dir / source_name,
                 )
             elif source_name in ("sp_global", "datastream"):
                 loaders[source_name] = ExtendedLoader(

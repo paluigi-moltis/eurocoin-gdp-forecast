@@ -110,22 +110,25 @@ sources:
         publication_lag_days: 5
         revised: false
 
-  fred:
-    base_url: "https://fred.stlouisfed.org/graph/fredgraph.csv"
+  ecb:
+    base_url: ""
     series:
-      # OECD-sourced financial data mirrored on FRED
-      - id: "BOND_10Y"
-        code: "IRLTLT01EZM156N"
-        filter: ""
+      # M3 monetary aggregate via ECB SDMX (sdmx1 library)
+      # Dataflow: BSI, key: Monthly, EA, SA, M3 stocks, EUR millions
+      - id: "M3"
+        code: "BSI"
+        filter: "M.U2.Y.V.M30.X.1.U2.2300.Z01.E"
         frequency: "monthly"
-        description: "Euro area 10-year government bond yield (OECD via FRED)"
-        publication_lag_days: 1
+        description: "Monetary aggregate M3, SA, EUR millions (EA)"
+        publication_lag_days: 30
         revised: false
 
-      - id: "M3"
-        code: "MABMM301EZM189S"
-        filter: ""
+      # 10-year government bond yield via ECB SDMX
+      # Dataflow: FM, key: Monthly, EA, EUR, 4F, BBB, U2_10Y, Yield
+      - id: "BOND_10Y"
+        code: "FM"
+        filter: "M.U2.EUR.4F.BB.U2_10Y.YLD"
         frequency: "monthly"
-        description: "Euro area M3 monetary aggregate (OECD via FRED, until Nov 2023)"
-        publication_lag_days: 30
+        description: "Euro area 10-year government bond yield"
+        publication_lag_days: 1
         revised: false
