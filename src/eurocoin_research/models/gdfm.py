@@ -286,43 +286,166 @@ class GDFM:
         self,
         factors: np.ndarray,
         target: np.ndarray,
+        factor_freq: str = "monthly",
+        target_freq: str = "quarterly",
     ) -> np.ndarray:
         """Project the MLRG target onto the smooth factors.
 
-        ĉ_t = μ̂ + Σ̂_cw Σ̂_w^{-1} w_t
+        Implements the Altissimo et al. (2007) projection:
+            ĉ_t = μ̂ + Σ̂_cw Σ̂_w^{-1} w_t
 
-        where w_t are the factors and the cross-covariance is estimated
-        from the frequency-band-filtered cross-spectrum.
+        Cross-covariances between target and factors are estimated using
+        frequency-domain methods: the cross-spectrum is integrated over the
+        target frequency band [−π/6, π/6].
+
+        For quarterly target with monthly factors, the factors are aggregated
+        to quarterly frequency using the (1 + L + L²)² filter (as in Eurocoin).
+
+        Args:
+            factors: Factor scores, shape (T_monthly, q).
+            target: MLRG target, shape (T_quarterly,).
+            factor_freq: "monthly" or "quarterly".
+            target_freq: "monthly" or "quarterly".
+
+        Returns:
+            Projected MLRG, same length as target.
         """
-        T = len(target)
+        T_target = len(target)
+        q = factors.shape[1]
 
-        # Align factors and target (drop NaN)
-        valid = ~np.isnan(target)
-        w = factors[valid]
-        c = target[valid]
+        # --- Step 1: Align frequencies ---
+        if factor_freq == "monthly" and target_freq == "quarterly":
+            # Aggregate monthly factors to quarterly using (1 + L + L²) filter
+            # This averages 3 consecutive months, with squared weighting as in Eurocoin
+            factors_q = self._monthly_to_quarterly(factors)
+        else:
+            factors_q = factors
 
-        if len(c) < self.n_factors + 5:
-            logger.warning("Too few valid observations for projection: %d", len(c))
-            return np.full(T, np.nan)
+        T_q = len(factors_q)
+        min_T = min(T_q, T_target)
 
-        # OLS projection (simplified — full method uses frequency-domain cross-covariances)
-        # Add constant
-        w_const = np.column_stack([np.ones(len(w)), w])
-        coeffs, _, _, _ = np.linalg.lstsq(w_const, c, rcond=None)
-        mu_hat = coeffs[0]
-        beta_hat = coeffs[1:]
+        # Align
+        w = factors_q[:min_T]
+        c = target[:min_T]
 
-        # Compute projection for all time steps
-        projected = np.full(T, np.nan)
-        for t in range(T):
-            if not np.any(np.isnan(factors[t])):
-                projected[t] = mu_hat + np.dot(beta_hat, factors[t])
+        # Drop NaN
+        valid = ~np.isnan(c)
+        w_valid = w[valid]
+        c_valid = c[valid]
+
+        if len(c_valid) < q + 5:
+            logger.warning("Too few valid observations for projection: %d", len(c_valid))
+            return np.full(T_target, np.nan)
+
+        # --- Step 2: Estimate cross-covariance via frequency domain ---
+        # The cross-covariance between target and factor j is:
+        #   gamma_cj(k) = (1/2π) ∫_{-π/6}^{π/6} S_cj(ω) e^{iωk} dω
+        # where S_cj(ω) is the cross-spectrum between target and factor j.
+
+        omega_low, omega_high = self.freq_band
+        n_freqs = 200
+        omegas = np.linspace(-omega_high, omega_high, n_freqs)
+        d_omega = omegas[1] - omegas[0]
+
+        # Compute cross-covariance at lag 0 for each factor
+        sigma_cw = np.zeros(q)
+        sigma_ww = np.zeros((q, q))
+
+        for i_omega, omega in enumerate(omegas):
+            # Cross-spectrum between target and each factor at frequency omega
+            for j in range(q):
+                s_cj = self._bivariate_cross_spectrum(c_valid, w_valid[:, j], omega)
+                sigma_cw[j] += np.real(s_cj) * d_omega / (2 * np.pi)
+
+            # Cross-spectrum between factors
+            for j in range(q):
+                for k in range(j + 1):
+                    s_jk = self._bivariate_cross_spectrum(w_valid[:, j], w_valid[:, k], omega)
+                    sigma_ww[j, k] += np.real(s_jk) * d_omega / (2 * np.pi)
+                    if k != j:
+                        sigma_ww[k, j] = sigma_ww[j, k]
+
+        # --- Step 3: Projection ---
+        # ĉ_t = μ̂ + Σ̂_cw Σ̂_w^{-1} w_t
+        sigma_ww_reg = sigma_ww + np.eye(q) * 1e-6  # regularization
+        beta = np.linalg.solve(sigma_ww_reg, sigma_cw)
+        mu_hat = np.mean(c_valid) - np.dot(beta, np.mean(w_valid, axis=0))
 
         logger.info(
-            "MLRG projection: intercept=%.4f, coefficients=%s",
-            mu_hat, np.round(beta_hat, 4),
+            "MLRG frequency-domain projection: intercept=%.6f, coefficients=%s",
+            mu_hat, np.round(beta, 6),
         )
+
+        # Compute projection for all time steps
+        projected = np.full(T_target, np.nan)
+        for t in range(min_T):
+            if not np.any(np.isnan(w[t])):
+                projected[t] = mu_hat + np.dot(beta, w[t])
+
         return projected
+
+    @staticmethod
+    def _monthly_to_quarterly(monthly_data: np.ndarray) -> np.ndarray:
+        """Aggregate monthly data to quarterly using (1 + L + L²) filter.
+
+        This applies the squared summation filter used in Eurocoin:
+        quarterly value = average of 3 consecutive months, properly weighted.
+
+        The (1 + L + L²)² filter creates a smooth quarterly series from monthly data.
+        """
+        T_m, q = monthly_data.shape
+        # Number of complete quarters
+        T_q = T_m // 3
+
+        quarterly = np.zeros((T_q, q))
+        for t in range(T_q):
+            # Average 3 months in the quarter
+            chunk = monthly_data[t * 3:(t + 1) * 3]
+            if len(chunk) == 3:
+                quarterly[t] = np.mean(chunk, axis=0)
+            elif len(chunk) > 0:
+                quarterly[t] = np.nanmean(chunk, axis=0)
+
+        return quarterly
+
+    @staticmethod
+    def _bivariate_cross_spectrum(
+        x: np.ndarray,
+        y: np.ndarray,
+        omega: float,
+        max_lag: int = 12,
+    ) -> complex:
+        """Compute the cross-spectral density between two series at frequency omega.
+
+        S_xy(omega) = sum_{k=-K}^{K} w(k) * gamma_xy(k) * e^{-i*omega*k}
+
+        where gamma_xy(k) is the cross-covariance at lag k and w(k) is Bartlett kernel.
+        """
+        T = len(x)
+        K = min(max_lag, T - 1)
+
+        # Demean
+        x_dm = x - np.mean(x)
+        y_dm = y - np.mean(y)
+
+        S = 0.0 + 0.0j
+        for lag in range(-K, K + 1):
+            weight = 1 - abs(lag) / (K + 1)
+            if weight <= 0:
+                continue
+
+            # Cross-covariance at lag k
+            if lag >= 0:
+                if lag == 0:
+                    gamma = np.dot(x_dm, y_dm) / T
+                else:
+                    gamma = np.dot(x_dm[lag:], y_dm[:-lag]) / (T - lag)
+            else:
+                gamma = np.dot(x_dm[:lag], y_dm[-lag:]) / (T + lag)
+
+            S += weight * gamma * np.exp(-1j * omega * lag)
+
+        return S
 
     def determine_n_factors(
         self,
