@@ -1,15 +1,12 @@
 # Public data source definitions
-# All sources are freely accessible via public APIs
+# All sources accessed via the sdmx1 library (sdmx.Client)
 #
-# Eurostat SDMX key format: dimension1.dimension2...dimensionN (dots in URL path)
-# FRED CSV API: https://fred.stlouisfed.org/graph/fredgraph.csv?id=SERIES_ID
+# Eurostat source: ESTAT (sdmx1 source ID)
+#   Key format: dimension1.dimension2...dimensionN (dots in URL path)
+#   Geo codes vary by dataset: EA19 (hard data), EA20/EA21 (surveys/labor)
 #
-# NOTE: Eurostat geo codes vary by dataset:
-# - Hard data (GDP, IP, prices): EA19 or EA20
-# - Survey data: EA20 only (EA19 not available for all survey datasets)
-#
-# NOTE: ECB SDW API (data-api.ecb.europa.eu) is not accessible from all servers.
-# Financial data (bond yields, M3) is sourced via FRED (OECD mirror) instead.
+# ECB source: ECB (sdmx1 source ID)
+#   Dataflows: BSI (monetary), FM (financial markets), EXR (exchange rates)
 
 sources:
 
@@ -73,7 +70,7 @@ sources:
         publication_lag_days: 35
         revised: true
 
-      # === Business Surveys ===
+      # === Business and Consumer Surveys (leading indicators) ===
       # ei_bsin_m_r2: freq.indic.s_adj.unit.geo
       - id: "ICI"
         code: "ei_bsin_m_r2"
@@ -106,15 +103,15 @@ sources:
         code: "ei_bsrt_m_r2"
         filter: "M.BS-RCI.SA.BAL.EA20"
         frequency: "monthly"
-        description: "Retail Confidence Indicator, SA (EA20)"
+        description: "Retail Trade Confidence Indicator, SA (EA20)"
         publication_lag_days: 5
         revised: false
 
   ecb:
     base_url: ""
     series:
-      # M3 monetary aggregate via ECB SDMX (sdmx1 library)
-      # Dataflow: BSI, key: Monthly, EA, SA, M3 stocks, EUR millions
+      # === Monetary Aggregates ===
+      # BSI: freq.ref_area.adjustment.bs_rep_sector.bs_item.maturity_orig.data_type.count_area.bs_count_sector.currency_trans.bs_suffix
       - id: "M3"
         code: "BSI"
         filter: "M.U2.Y.V.M30.X.1.U2.2300.Z01.E"
@@ -123,12 +120,42 @@ sources:
         publication_lag_days: 30
         revised: false
 
-      # 10-year government bond yield via ECB SDMX
-      # Dataflow: FM, key: Monthly, EA, EUR, 4F, BBB, U2_10Y, Yield
+      # === Interest Rates (Financial Markets dataflow: FM) ===
+      # FM: freq.ref_area.currency.provider_fm.cb_nominal_measure.fm_item.fmat
+      # €STR (Euro Short-Term Rate) — replaces EONIA as the key short-term rate
+      - id: "ESTR"
+        code: "FM"
+        filter: "M.U2.EUR.4F.MM.UONSTR.HSTA"
+        frequency: "monthly"
+        description: "Euro Short-Term Rate (€STR), monthly average"
+        publication_lag_days: 5
+        revised: false
+
+      # 10-year government bond yield
       - id: "BOND_10Y"
         code: "FM"
         filter: "M.U2.EUR.4F.BB.U2_10Y.YLD"
         frequency: "monthly"
-        description: "Euro area 10-year government bond yield"
+        description: "Euro area 10-year government bond yield, monthly average"
         publication_lag_days: 1
+        revised: false
+
+      # === Equity Markets ===
+      # Euro Stoxx 50 index
+      - id: "EUROSTOXX50"
+        code: "FM"
+        filter: "M.U2.EUR.DS.EI.DJEURST.HSTA"
+        frequency: "monthly"
+        description: "Euro Stoxx 50 index, monthly average"
+        publication_lag_days: 1
+        revised: false
+
+      # === Exchange Rates ===
+      # EXR: freq.currency.currency_ref.currency_provider.collection
+      - id: "EURUSD"
+        code: "EXR"
+        filter: "M.USD.EUR.SP00.A"
+        frequency: "monthly"
+        description: "EUR/USD exchange rate, monthly average"
+        publication_lag_days: 5
         revised: false

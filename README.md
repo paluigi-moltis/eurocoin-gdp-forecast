@@ -43,22 +43,27 @@ The project supports two data modes via a configuration flag:
 - **`public`** (default): Eurostat SDMX + FRED (OECD mirror) — all freely accessible.
 - **`extended`**: Adds commercial data (S&P Global / Markit PMI) matching the Aprigliano et al. (2022) dataset.
 
-### Current Data Panel (12 series)
+### Current Data Panel (15 series)
 
-| Series | Source | Frequency | Description |
-|--------|--------|-----------|-------------|
-| GDP_LEVELS | Eurostat | Quarterly | GDP chain-linked volumes, SA (EA19) |
-| IP_TOTAL | Eurostat | Monthly | Industrial production, manufacturing, SA |
-| HICP_TOTAL | Eurostat | Monthly | HICP All-items index |
-| HICP_ENERGY | Eurostat | Monthly | HICP Energy index |
-| PPI_DOM | Eurostat | Monthly | PPI manufacturing, NSA |
-| UNEMP | Eurostat | Monthly | Unemployment rate, SA |
-| ICI | Eurostat | Monthly | Industrial Confidence Indicator |
-| CCI | Eurostat | Monthly | Consumer Confidence Indicator |
-| ConstCI | Eurostat | Monthly | Construction Confidence Indicator |
-| RetailCI | Eurostat | Monthly | Retail Confidence Indicator |
-| BOND_10Y | FRED | Monthly | 10-year government bond yield |
-| M3 | FRED | Monthly | M3 monetary aggregate |
+All series accessed via the `sdmx1` library (Eurostat ESTAT source + ECB source).
+
+| Series | Source | Freq | Description |
+|--------|--------|------|-------------|
+| GDP_LEVELS | Eurostat | Q | GDP chain-linked volumes, SA (EA19) |
+| IP_TOTAL | Eurostat | M | Industrial production, manufacturing, SA |
+| HICP_TOTAL | Eurostat | M | HICP All-items index |
+| HICP_ENERGY | Eurostat | M | HICP Energy index |
+| PPI_DOM | Eurostat | M | PPI manufacturing, NSA |
+| UNEMP | Eurostat | M | Unemployment rate, SA (EA21) |
+| ICI | Eurostat | M | Industrial Confidence Indicator (EA20) |
+| CCI | Eurostat | M | Consumer Confidence Indicator (EA20) |
+| ConstCI | Eurostat | M | Construction Confidence Indicator (EA20) |
+| RetailCI | Eurostat | M | Retail Trade Confidence Indicator (EA20) |
+| M3 | ECB | M | Monetary aggregate M3, SA, EUR millions |
+| ESTR | ECB | M | Euro Short-Term Rate (€STR), monthly average |
+| BOND_10Y | ECB | M | 10-year government bond yield |
+| EUROSTOXX50 | ECB | M | Euro Stoxx 50 index |
+| EURUSD | ECB | M | EUR/USD exchange rate |
 
 ### Data Vintages
 

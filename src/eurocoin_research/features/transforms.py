@@ -37,7 +37,10 @@ SERIES_TRANSFORMS = {
     "PPI_DOM": TransformType.PCH_YEAR,
     "UNEMP": TransformType.NONE,        # Already a rate
     "M3": TransformType.LOG_DIFF,
+    "ESTR": TransformType.NONE,         # Already a rate
     "BOND_10Y": TransformType.NONE,     # Already a rate/yield
+    "EUROSTOXX50": TransformType.LOG_DIFF,
+    "EURUSD": TransformType.LOG_DIFF,
     # Surveys → no transform (indices, roughly stationary)
     "ICI": TransformType.NONE,
     "CCI": TransformType.NONE,
