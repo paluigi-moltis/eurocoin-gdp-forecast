@@ -51,9 +51,9 @@ All series accessed via the `sdmx1` library (Eurostat ESTAT source + ECB source)
 |--------|--------|------|-------------|
 | GDP_LEVELS | Eurostat | Q | GDP chain-linked volumes, SA (EA changing composition) |
 | IP_TOTAL | ECB RTD | M | Industrial production index (total excl. construction & energy), WDA (EA changing composition, with vintages) |
-| HICP_TOTAL | Eurostat | M | HICP All-items index (EA changing composition) |
-| HICP_ENERGY | Eurostat | M | HICP Energy index (EA changing composition) |
-| PPI_DOM | Eurostat | M | PPI manufacturing, NSA (EA19 — pending EA alternative) |
+| HICP_TOTAL | ECB RTD | M | HICP All-items index, NSA (EA changing composition, with vintages) |
+| HICP_ENERGY | ECB RTD | M | HICP Energy index, NSA (EA changing composition, with vintages) |
+| PPI_DOM | ECB RTD | M | Producer price index, domestic, NSA (EA changing composition, with vintages) |
 | UNEMP | ECB | M | Unemployment rate, SA (EA changing composition) |
 | ESI | DG-ECFIN | M | Economic Sentiment Indicator (composite, EA changing composition) |
 | ICI | DG-ECFIN | M | Manufacturing Confidence Indicator (EA changing composition) |
@@ -64,7 +64,7 @@ All series accessed via the `sdmx1` library (Eurostat ESTAT source + ECB source)
 | M3 | ECB | M | Monetary aggregate M3, SA, EUR millions |
 | EURIBOR1M | ECB | M | 1-Month Euribor, monthly average |
 | BOND_10Y | ECB | M | 10-year government bond yield |
-| EUROSTOXX50 | ECB | M | Euro Stoxx 50 index |
+| EUROSTOXX50 | ECB RTD | M | Euro Stoxx 50 index (EA changing composition, with vintages) |
 | EURUSD | ECB | M | EUR/USD exchange rate |
 
 ### Data Vintages

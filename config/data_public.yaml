@@ -16,6 +16,7 @@ sources:
     base_url: "https://ec.europa.eu/eurostat/api/dissemination"
     series:
       # === National Accounts (GDP) ===
+      # GDP is NOT available in ECB RTD. Using Eurostat with EA changing composition.
       - id: "GDP_LEVELS"
         code: "namq_10_gdp"
         filter: "Q.CLV10_MEUR.SCA.B1GQ.EA"
@@ -24,49 +25,61 @@ sources:
         publication_lag_days: 30
         revised: true
 
-      # === Prices ===
-      - id: "HICP_TOTAL"
-        code: "prc_hicp_midx"
-        filter: "M.I15.CP00.EA"
-        frequency: "monthly"
-        description: "HICP All-items, index 2015=100 (EA changing composition)"
-        publication_lag_days: 20
-        revised: false
-
-      - id: "HICP_ENERGY"
-        code: "prc_hicp_midx"
-        filter: "M.I15.NRG.EA"
-        frequency: "monthly"
-        description: "HICP Energy, index 2015=100 (EA changing composition)"
-        publication_lag_days: 20
-        revised: false
-
-      # PPI: Eurostat does NOT support EA for this dataset. Using ECB RTD instead.
-      - id: "PPI_DOM"
-        code: "sts_inpp_m"
-        filter: "M.PRC_PRR.B-D.NSA.I21.EA19"
-        frequency: "monthly"
-        description: "PPI manufacturing, NSA, index 2021 (EA19 — EA not available in Eurostat; pending ECB RTD migration)"
-        publication_lag_days: 45
-        revised: true
-
   ecb:
     base_url: ""
     series:
-      # === Industrial Production (ECB RTD with vintages) ===
+      # === ECB RTD series (S0 = EA changing composition + vintage history) ===
       # RTD key: freq.ref_area.adjustment.rt_econ_concept.rt_denom
-      # S0 = EA moving concept (changing composition), W = working-day adjusted
+      # Vintages available via include_history=True for pseudo-real-time backtesting.
+
+      # Industrial Production (total excl construction & energy), WDA
       - id: "IP_TOTAL"
         code: "RTD"
         filter: "M.S0.W.I_XCOEN.X"
         frequency: "monthly"
-        description: "Industrial production index (total excl. construction & energy), WDA (EA changing composition, ECB RTD with vintages)"
+        description: "Industrial production index, WDA (EA changing composition, ECB RTD with vintages)"
         publication_lag_days: 45
         revised: true
 
-      # === Labour Market ===
-      # ECB LFSI: freq.ref_area.s_adj.indic.age.sex
-      # U2 = EA changing composition
+      # PPI domestic (total excl construction & energy), NSA, Index
+      - id: "PPI_DOM"
+        code: "RTD"
+        filter: "M.S0.N.P_P_XCOEN_DS.X"
+        frequency: "monthly"
+        description: "Producer price index, domestic, NSA (EA changing composition, ECB RTD with vintages)"
+        publication_lag_days: 45
+        revised: true
+
+      # HICP All-items, NSA, Index
+      - id: "HICP_TOTAL"
+        code: "RTD"
+        filter: "M.S0.N.P_C_OV.X"
+        frequency: "monthly"
+        description: "HICP All-items index, NSA (EA changing composition, ECB RTD with vintages)"
+        publication_lag_days: 20
+        revised: false
+
+      # HICP Energy, NSA, Index
+      - id: "HICP_ENERGY"
+        code: "RTD"
+        filter: "M.S0.N.P_C_NRGY.X"
+        frequency: "monthly"
+        description: "HICP Energy index, NSA (EA changing composition, ECB RTD with vintages)"
+        publication_lag_days: 20
+        revised: false
+
+      # Euro Stoxx 50 index
+      - id: "EUROSTOXX50"
+        code: "RTD"
+        filter: "M.S0.N.C_DJE50.X"
+        frequency: "monthly"
+        description: "Euro Stoxx 50 index (EA changing composition, ECB RTD with vintages)"
+        publication_lag_days: 1
+        revised: false
+
+      # === ECB SDMX series (U2 = EA changing composition, no vintage history) ===
+
+      # Labour Market
       - id: "UNEMP"
         code: "LFSI"
         filter: "M.U2.S.UNEHRT.TOTAL0.15_74.T"
@@ -75,7 +88,7 @@ sources:
         publication_lag_days: 35
         revised: true
 
-      # === Monetary Aggregates ===
+      # Monetary Aggregates
       - id: "M3"
         code: "BSI"
         filter: "M.U2.Y.V.M30.X.1.U2.2300.Z01.E"
@@ -84,7 +97,7 @@ sources:
         publication_lag_days: 30
         revised: false
 
-      # === Interest Rates ===
+      # Interest Rates
       - id: "EURIBOR1M"
         code: "FM"
         filter: "M.U2.EUR.RT.MM.EURIBOR1MD_.HSTA"
@@ -101,16 +114,7 @@ sources:
         publication_lag_days: 1
         revised: false
 
-      # === Equity Markets ===
-      - id: "EUROSTOXX50"
-        code: "FM"
-        filter: "M.U2.EUR.DS.EI.DJEURST.HSTA"
-        frequency: "monthly"
-        description: "Euro Stoxx 50 index, monthly average"
-        publication_lag_days: 1
-        revised: false
-
-      # === Exchange Rates ===
+      # Exchange Rates
       - id: "EURUSD"
         code: "EXR"
         filter: "M.USD.EUR.SP00.A"
